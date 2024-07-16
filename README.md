@@ -34,3 +34,42 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+### Features
+
+Developer experience first, extremely flexible code structure and only keep what you need:
+
+- ⚡ [Next.js](https://nextjs.org) with App Router support
+- 🔥 Type checking [TypeScript](https://www.typescriptlang.org)
+- 💎 Integrate with [Tailwind CSS](https://tailwindcss.com)
+- ✅ Strict Mode for TypeScript and React 18
+
+### Project structure
+
+```shell
+.
+├── README.md                       # README file
+├── .github                         # GitHub folder
+├── .husky                          # Husky configuration
+├── .vscode                         # VSCode configuration
+├── migrations                      # Database migrations
+├── public                          # Public assets folder
+├── scripts                         # Scripts folder
+├── src
+│   ├── app                         # Next JS App (App Router)
+│   ├── components                  # React components
+│   ├── libs                        # 3rd party libraries configuration
+│   ├── locales                     # Locales folder (i18n messages)
+│   ├── models                      # Database models
+│   ├── styles                      # Styles folder
+│   ├── templates                   # Templates folder
+│   ├── types                       # Type definitions
+│   ├── utils                       # Utilities folder
+│   └── validations                 # Validation schemas
+├── tests
+│   ├── e2e                         # E2E tests, also includes Monitoring as Code
+│   └── integration                 # Integration tests
+├── tailwind.config.ts              # Tailwind CSS configuration
+└── tsconfig.json                   # TypeScript configuration
+```
