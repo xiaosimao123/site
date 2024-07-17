@@ -1,20 +1,3 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "eslint:recommended",
-    "plugin:prettier/recommended"
-  ],
-  // 这个是nextjs官网推荐的写法
-  "env": {
-    "es2020":true,
-    "es6": true,
-    "node": true
-  },
-  "plugins": [
-    "prettier"
-  ],
-  "rules": {
-    "no-unused-vars": "warn",
-    "prettier/prettier": "warn"
-  }
+  "extends": "next/core-web-vitals"
 }

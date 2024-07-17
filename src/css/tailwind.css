@@ -1,0 +1,4 @@
+/* stylelint-disable stylelint-disable-next-line declaration-block-trailing-semicolon */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
