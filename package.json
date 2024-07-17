@@ -8,6 +8,7 @@
     "start": "next start",
     "fix": "prettier --write ./src",
     "lint": "next lint",
+    "commit": "git-cz",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -16,13 +17,17 @@
     "react-dom": "^18"
   },
   "lint-staged": {
-    "*.{js,jsx,vue,ts,tsx}": [
+    "src/**/*.{css,less}": [
+      "stylelint --fix"
+    ],
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
       "eslint --fix"
     ]
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-customizable"
+      "path": "cz-conventional-changelog"
     }
   },
   "devDependencies": {
@@ -32,6 +37,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "commitizen": "^4.3.0",
+    "commitlint-config-cz": "^0.13.3",
     "cz-customizable": "^7.1.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.5",
@@ -42,6 +48,11 @@
     "postcss": "^8",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5",
+    "stylelint": "^16.7.0",
+    "stylelint-config-css-modules": "^4.4.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-order": "^6.0.4",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
