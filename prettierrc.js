@@ -1,12 +1,40 @@
-module.exports = {
-    singleQuote: true, // 使用单引号代替双引号
-    printWidth: 200, // 超过最大值换行
-    semi: false, // 结尾不用分号
-    useTabs: true, // 缩进使用tab, 不使用空格
-    tabWidth: 4, // tab 样式宽度
-    bracketSpacing: true, // 对象数组, 文字间加空格 {a: 1} => { a: 1 }
-    arrowParens: 'avoid', // 如果可以, 自动去除括号 (x) => x 变为 x => x
-    proseWrap: 'preserve',
-    htmlWhitespaceSensitivity: 'ignore',
-    trailingComma: 'all',
-}
+/** @typedef  {import("@ianvs/prettier-plugin-sort-imports").PluginConfig} SortImportsConfig*/
+/** @typedef  {import("prettier").Config} PrettierConfig*/
+/** @typedef  {{ tailwindConfig: string }} TailwindConfig*/
+
+/** @type { PrettierConfig | SortImportsConfig | TailwindConfig } */
+const config = {
+  arrowParens: "always",
+  printWidth: 120,
+  singleQuote: false,
+  jsxSingleQuote: false,
+  semi: true,
+  trailingComma: "es5",
+  tabWidth: 2,
+  plugins: [
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss",
+  ],
+  importOrder: [
+    "^(react/(.*)$)|^(react$)",
+    "^(next/(.*)$)|^(next$)",
+    "<BUILTIN_MODULES>",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^types$",
+    "^@/env(.*)$",
+    "^@/types/(.*)$",
+    "^@/config/(.*)$",
+    "^@/lib/(.*)$",
+    "^@/hooks/(.*)$",
+    "^@/components/ui/(.*)$",
+    "^@/components/(.*)$",
+    "^@/styles/(.*)$",
+    "^@/app/(.*)$",
+    "",
+    "^[./]",
+  ],
+  importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
+};
+
+module.exports = config;

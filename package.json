@@ -9,6 +9,7 @@
     "fix": "prettier --write ./src",
     "lint": "next lint",
     "commit": "git-cz",
+    "format": "prettier --write \"**/*.{ts,tsx,md,mdx,js,jsx,json,mjs}\"",
     "prepare": "husky install"
   },
   "dependencies": {

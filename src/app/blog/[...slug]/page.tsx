@@ -3,7 +3,7 @@ import "katex/dist/katex.css";
 
 import PageTitle from "@/components/PageTitle";
 import { components } from "@/components/MDXComponents";
-import { MDXLayoutRenderer } from "pliny/mdx-components";
+
 import {
   sortPosts,
   coreContent,
@@ -17,6 +17,7 @@ import PostBanner from "@/layouts/PostBanner";
 import { Metadata } from "next";
 import siteMetadata from "@/data/siteMetadata";
 import { notFound } from "next/navigation";
+import { MDXLayoutRenderer } from "@/components/mdx";
 
 const defaultLayout = "PostLayout";
 const layouts = {
@@ -125,10 +126,15 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
         prev={prev}
       >
         <MDXLayoutRenderer
+          components={components}
+          code={post.body.code}
+          toc={post.toc}
+        />
+        {/* <MDXLayoutRenderer
           code={post.body.code}
           components={components}
           toc={post.toc}
-        />
+        /> */}
       </Layout>
     </>
   );

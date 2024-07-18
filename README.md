@@ -35,7 +35,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-
 ### Features
 
 Developer experience first, extremely flexible code structure and only keep what you need:
@@ -45,6 +44,7 @@ Developer experience first, extremely flexible code structure and only keep what
 - 💎 Integrate with [Tailwind CSS](https://tailwindcss.com)
 - ✅ Strict Mode for TypeScript and React 18
 - Documentation and blog using MDX and Contentlayer
+
 ### Project structure
 
 ```shell
