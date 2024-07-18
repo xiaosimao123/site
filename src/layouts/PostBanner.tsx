@@ -34,7 +34,7 @@ export default function PostMinimal({
       <ScrollTopAndComment />
       <article>
         <div>
-          <div className="space-y-1 pb-10 text-center dark:border-gray-700">
+          {/* <div className="space-y-1 pb-10 text-center dark:border-gray-700">
             <div className="w-full">
               <Bleed>
                 <div className="relative aspect-[2/1] w-full">
@@ -50,7 +50,7 @@ export default function PostMinimal({
             <div className="relative pt-10">
               <PageTitle>{title}</PageTitle>
             </div>
-          </div>
+          </div> */}
           <div className="prose max-w-none py-4 dark:prose-invert">
             {children}
           </div>
