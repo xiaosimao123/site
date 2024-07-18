@@ -19,6 +19,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
+        {/* <script src="https://giscus.app/client.js"
+        data-repo="[在此输入仓库]"
+        data-repo-id="[在此输入仓库 ID]"
+        data-category="[在此输入分类名]"
+        data-category-id="[在此输入分类 ID]"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossOrigin="anonymous"
+        async>
+        </script> */}
         <SectionContainer>
           <div className="flex h-screen flex-col justify-between font-sans">
             <Header />

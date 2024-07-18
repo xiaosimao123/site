@@ -10,7 +10,7 @@ import Tag from "@/components/Tag";
 import siteMetadata from "@/data/siteMetadata";
 import ScrollTopAndComment from "@/components/ScrollTopAndComment";
 
-const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/data/${path}`;
+const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/content/${path}`;
 const discussUrl = (path) =>
   `https://mobile.twitter.com/search?q=${encodeURIComponent(`${siteMetadata.siteUrl}/${path}`)}`;
 
@@ -119,14 +119,16 @@ export default function PostLayout({
                 {` • `}
                 <Link href={editUrl(filePath)}>View on GitHub</Link>
               </div>
-              {siteMetadata.comments && (
+              {
                 <div
                   className="pb-6 pt-6 text-center text-gray-700 dark:text-gray-300"
                   id="comment"
                 >
-                  <Comments slug={slug} />
+                  <>
+                    <Comments />
+                  </>
                 </div>
-              )}
+              }
             </div>
             <footer>
               <div className="divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700 xl:col-start-1 xl:row-start-2 xl:divide-y">

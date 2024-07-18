@@ -6,7 +6,7 @@ const siteMetadata = {
   description: "Thoughts from a wandering mind",
   language: "en-us",
   siteUrl: "https://www.timlrx.com",
-  siteRepo: "https://github.com/timlrx/timlrx.com",
+  siteRepo: "https://github.com/xiaosimao123/site",
   image: "/static/images/avatar.png",
   socialBanner: "/static/images/twitter-card.png",
   email: "timothy.lin@alumni.ubc.ca",
@@ -26,26 +26,29 @@ const siteMetadata = {
   comment: {
     provider: "giscus", // supported providers: giscus, utterances, disqus
     giscusConfig: {
-      repo: "xiaosimao123/site", // username/repoName
       // Visit the link below, enter your repo in the configuration section and copy the script data parameters
       // Before that you should create a new Github discussions category with the Announcements type so that new discussions can only be created by maintainers and giscus
       // https://giscus.app/
-      repositoryId: "R_kgDOMW0mew",
-      category: "Announcements",
-      categoryId: "",
-      mapping: "pathname", // supported options: pathname, url, title
+
+      repo: process.env.NEXT_PUBLIC_GISCUS_REPO,
+      repositoryId: process.env.NEXT_PUBLIC_GISCUS_REPOSITORY_ID,
+      category: process.env.NEXT_PUBLIC_GISCUS_CATEGORY,
+      categoryId: process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID,
+      mapping: "title", // supported options: pathname, url, title
       reactions: "1", // Emoji reactions: 1 = enable / 0 = disable
       // Send discussion metadata periodically to the parent window: 1 = enable / 0 = disable
-      metadata: "",
+      metadata: "0",
       // theme example: light, dark, dark_dimmed, dark_high_contrast
       // transparent_dark, preferred_color_scheme, custom
       theme: "light",
       // theme when dark mode
-      darkTheme: "dark",
+      darkTheme: "transparent_dark",
       // If the theme option above is set to 'custom`
       // please provide a link below to your custom theme css file.
       // example: https://giscus.app/themes/custom_example.css
       themeURL: "",
+      // This corresponds to the `data-lang="en"` in giscus's configurations
+      lang: "en",
     },
     utterancesConfig: {
       repo: "", // username/repoName

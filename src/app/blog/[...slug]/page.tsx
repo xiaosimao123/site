@@ -110,8 +110,8 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
       name: author.name,
     };
   });
-  const Layout = layouts["PostBanner"];
-  // const Layout = layouts[post.layout || defaultLayout];
+  // const Layout = layouts["PostBanner"];
+  const Layout = layouts[post.layout || defaultLayout];
 
   return (
     <>
