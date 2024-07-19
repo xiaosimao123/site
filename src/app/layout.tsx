@@ -4,6 +4,7 @@ import "@/css/tailwind.css";
 import React from "react";
 import SectionContainer from "@/components/SectionContainer";
 import Header from "@/components/Header";
+import { MainNavigation } from "@/components/common/MainNavigation";
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -34,12 +35,22 @@ export default function RootLayout({
         crossOrigin="anonymous"
         async>
         </script> */}
-        <SectionContainer>
+        <MainNavigation />
+        {/* <SectionContainer>
           <div className="flex h-screen flex-col justify-between font-sans">
-            <Header />
+
             <main className="mb-auto">{children}</main>
           </div>
-        </SectionContainer>
+        </SectionContainer> */}
+        <div className="flex min-h-screen flex-col justify-between">
+          <main
+            className="relative pt-16"
+            style={{ scrollPaddingTop: "150px" }}
+          >
+            <SectionContainer>{children}</SectionContainer>
+          </main>
+          {/* <Footer /> */}
+        </div>
       </body>
     </html>
   );
