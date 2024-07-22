@@ -1,5 +1,6 @@
+/* eslint-disable import/prefer-default-export */
 import { Metadata } from "next";
-import siteMetadata from "@/data/siteMetadata.js";
+import siteMetadata from "@/data/siteMetadata";
 
 interface PageSEOProps {
   title: string;

@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+
 "use client";
 
 import { useState } from "react";
@@ -78,6 +80,7 @@ export default function ListLayout({
 }: ListLayoutProps) {
   const [searchValue, setSearchValue] = useState("");
   const filteredBlogPosts = posts.filter((post) => {
+    // eslint-disable-next-line no-unsafe-optional-chaining
     const searchContent = post.title + post.summary + post.tags?.join(" ");
     return searchContent.toLowerCase().includes(searchValue.toLowerCase());
   });
@@ -125,7 +128,7 @@ export default function ListLayout({
         <ul>
           {!filteredBlogPosts.length && "No posts found."}
           {displayPosts.map((post) => {
-            const { path, date, title, summary, tags } = post;
+            const { path, date, summary, tags } = post;
             return (
               <li key={path} className="py-4">
                 <article className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">

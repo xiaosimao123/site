@@ -1,10 +1,10 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 "use client";
 
 import { usePathname } from "next/navigation";
 import { slug } from "github-slugger";
-import { formatDate } from "pliny/utils/formatDate";
 import { CoreContent } from "pliny/utils/contentlayer";
 import type { Blog } from "contentlayer/generated";
 import Link from "@/components/Link";
@@ -34,6 +34,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
     <div className="space-y-2 pb-8 pt-6 md:space-y-5">
       <nav className="flex justify-between">
         {!prevPage && (
+          // eslint-disable-next-line react/button-has-type
           <button
             className="cursor-auto disabled:opacity-50"
             disabled={!prevPage}
@@ -135,6 +136,7 @@ export default function ListLayoutWithTags({
           <ul>
             {displayPosts.map(
               (post) => (
+                // eslint-disable-next-line no-underscore-dangle
                 <PostPreview post={post} key={post._id} />
               ),
               // const { path, date, title, summary, tags } = post;

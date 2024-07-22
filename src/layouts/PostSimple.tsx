@@ -22,7 +22,7 @@ export default function PostLayout({
   prev,
   children,
 }: LayoutProps) {
-  const { path, slug, date, title } = content;
+  const { slug, date, title } = content;
 
   return (
     <SectionContainer>
@@ -57,7 +57,7 @@ export default function PostLayout({
                 className="pb-6 pt-6 text-center text-gray-700 dark:text-gray-300"
                 id="comment"
               >
-                <Comments slug={slug} />
+                <Comments />
               </div>
             )}
             <footer>

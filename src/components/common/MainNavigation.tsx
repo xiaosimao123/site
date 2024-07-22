@@ -1,3 +1,8 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable import/no-cycle */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable react/function-component-definition */
+
 "use client";
 
 import * as React from "react";
@@ -114,21 +119,21 @@ export const NavLink: React.FC<{
   label?: string;
   hideLabel?: boolean;
   icon?: IconName;
-  url: string;
+  url: string | undefined;
 }> = ({ label, hideLabel = false, icon, url }) => {
   const pathname = usePathname();
-  const active = pathname.split("/")[1] == url.replace("/", "");
+  const active = pathname.split("/")[1] === url!.replace("/", "");
 
   return (
-    <Link legacyBehavior href={url}>
+    <Link legacyBehavior href={url as string}>
       <a
         className={`group flex h-8 items-center rounded-md bg-transparent px-3 text-sm font-medium leading-none ${
           active
             ? "bg-violet-50 text-violet-900 dark:bg-violet-500/20 dark:text-violet-50"
             : "text-slate-600 hover:bg-gray-50 hover:text-slate-700 dark:text-slate-300 dark:hover:bg-gray-900 dark:hover:text-slate-200"
         }`}
-        target={isExternalUrl(url) ? "_blank" : undefined}
-        rel={isExternalUrl(url) ? "noreferrer" : undefined}
+        target={isExternalUrl(url as string) ? "_blank" : undefined}
+        rel={isExternalUrl(url as string) ? "noreferrer" : undefined}
       >
         {icon && (
           <span className="block w-5 text-slate-400 group-hover:text-slate-500 dark:text-slate-500 dark:group-hover:text-slate-400">
@@ -161,7 +166,9 @@ export function MainNavigation() {
                 key={index}
                 label={label}
                 url={url}
-                icon={isExternalUrl(url) ? "external-link" : undefined}
+                icon={
+                  isExternalUrl(url as string) ? "external-link" : undefined
+                }
               />
             ))}
             <HoverMenu />

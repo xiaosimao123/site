@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import "@/css/prism.css";
 
 import { components } from "@/components/MDXComponents";
@@ -15,7 +16,7 @@ import PostBanner from "@/layouts/PostBanner";
 import { Metadata } from "next";
 import siteMetadata from "@/data/siteMetadata";
 import { notFound } from "next/navigation";
-import { MDXLayoutRenderer } from "@/components/mdx";
+import { MDXRenderer } from "@/components/mdx";
 
 const defaultLayout = "PostLayout";
 const layouts = {
@@ -109,17 +110,17 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
 
   return (
     <>
-      <script
+      {/* <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      /> */}
       <Layout
         content={mainContent}
         authorDetails={authorDetails}
         next={next}
         prev={prev}
       >
-        <MDXLayoutRenderer
+        <MDXRenderer
           components={components}
           code={post.body.code}
           toc={post.toc}

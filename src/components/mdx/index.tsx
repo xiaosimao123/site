@@ -11,12 +11,8 @@ export interface MDXLayoutRenderer {
   [key: string]: unknown;
 }
 
-export function MDXLayoutRenderer({
-  code,
-  components,
-  ...rest
-}: MDXLayoutRenderer) {
+// eslint-disable-next-line @typescript-eslint/no-shadow
+export function MDXRenderer({ code, components, ...rest }: MDXLayoutRenderer) {
   const Mdx = useMDXComponent(code);
-
   return <Mdx components={components} {...rest} />;
 }

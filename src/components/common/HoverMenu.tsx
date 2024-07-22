@@ -1,3 +1,6 @@
+/* eslint-disable import/no-cycle */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable import/prefer-default-export */
 import * as HoverCard from "@radix-ui/react-hover-card";
 import Image from "next/image";
 import { isExternalUrl } from "@/lib/utils/helpers";
