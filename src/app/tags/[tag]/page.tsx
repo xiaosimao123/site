@@ -12,7 +12,7 @@ export async function generateMetadata({
 }: {
   params: { tag: string };
 }): Promise<Metadata> {
-  const tag = params.tag;
+  const { tag } = params;
   return genPageMetadata({
     title: tag,
     description: `${siteMetadata.title} ${tag} tagged content`,
@@ -29,7 +29,7 @@ export const generateStaticParams = async () => {
   const tagCounts = tagData as Record<string, number>;
   const tagKeys = Object.keys(tagCounts);
   const paths = tagKeys.map((tag) => ({
-    tag: tag,
+    tag,
   }));
   return paths;
 };

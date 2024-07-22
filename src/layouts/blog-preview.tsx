@@ -8,7 +8,7 @@ type PostPreviewProps = {
   post: Blog;
 };
 
-const PostPreview = ({ post }: PostPreviewProps) => {
+function PostPreview({ post }: PostPreviewProps) {
   const { path, date, title, summary, tags, readingTime } = post;
   return (
     <li key={path} className="py-4">
@@ -65,6 +65,6 @@ const PostPreview = ({ post }: PostPreviewProps) => {
       </article>
     </li>
   );
-};
+}
 
 export default PostPreview;

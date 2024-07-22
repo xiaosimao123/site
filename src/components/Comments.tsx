@@ -19,10 +19,11 @@
 // }
 
 "use client";
+
 import siteMetadata from "@/data/siteMetadata";
 import Giscus from "@giscus/react";
 
-const Comments = () => {
+function Comments() {
   return (
     <Giscus
       repo={siteMetadata.comment.giscusConfig.repo}
@@ -38,6 +39,6 @@ const Comments = () => {
       loading="lazy"
     />
   );
-};
+}
 
 export default Comments;

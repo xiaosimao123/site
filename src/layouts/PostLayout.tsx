@@ -119,16 +119,12 @@ export default function PostLayout({
                 {` • `}
                 <Link href={editUrl(filePath)}>View on GitHub</Link>
               </div>
-              {
-                <div
-                  className="pb-6 pt-6 text-center text-gray-700 dark:text-gray-300"
-                  id="comment"
-                >
-                  <>
-                    <Comments />
-                  </>
-                </div>
-              }
+              <div
+                className="pb-6 pt-6 text-center text-gray-700 dark:text-gray-300"
+                id="comment"
+              >
+                <Comments />
+              </div>
             </div>
             <footer>
               <div className="divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700 xl:col-start-1 xl:row-start-2 xl:divide-y">

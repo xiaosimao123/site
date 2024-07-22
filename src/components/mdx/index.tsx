@@ -2,8 +2,8 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useMDXComponent } from "next-contentlayer/hooks";
-import { components } from "../MDXComponents";
 import type { MDXComponents } from "mdx/types";
+import { components } from "../MDXComponents";
 
 export interface MDXLayoutRenderer {
   code: string;
@@ -11,12 +11,12 @@ export interface MDXLayoutRenderer {
   [key: string]: unknown;
 }
 
-export const MDXLayoutRenderer = ({
+export function MDXLayoutRenderer({
   code,
   components,
   ...rest
-}: MDXLayoutRenderer) => {
+}: MDXLayoutRenderer) {
   const Mdx = useMDXComponent(code);
 
   return <Mdx components={components} {...rest} />;
-};
+}

@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { slug } from "github-slugger";
+
 interface Props {
   text: string;
 }
 
-const Tag = ({ text }: Props) => {
+function Tag({ text }: Props) {
   return (
     <Link
       href={`/tags/${slug(text)}`}
@@ -13,6 +14,6 @@ const Tag = ({ text }: Props) => {
       {text.split(" ").join("-")}
     </Link>
   );
-};
+}
 
 export default Tag;

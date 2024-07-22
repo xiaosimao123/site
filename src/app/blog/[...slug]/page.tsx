@@ -1,7 +1,5 @@
 import "@/css/prism.css";
-import "katex/dist/katex.css";
 
-import PageTitle from "@/components/PageTitle";
 import { components } from "@/components/MDXComponents";
 
 import {
@@ -49,11 +47,9 @@ export async function generateMetadata({
   if (post.images) {
     imageList = typeof post.images === "string" ? [post.images] : post.images;
   }
-  const ogImages = imageList.map((img) => {
-    return {
-      url: img.includes("http") ? img : siteMetadata.siteUrl + img,
-    };
-  });
+  const ogImages = imageList.map((img) => ({
+    url: img.includes("http") ? img : siteMetadata.siteUrl + img,
+  }));
 
   return {
     title: post.title,
@@ -104,12 +100,10 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
   });
   const mainContent = coreContent(post);
   const jsonLd = post.structuredData;
-  jsonLd["author"] = authorDetails.map((author) => {
-    return {
-      "@type": "Person",
-      name: author.name,
-    };
-  });
+  jsonLd.author = authorDetails.map((author) => ({
+    "@type": "Person",
+    name: author.name,
+  }));
   // const Layout = layouts["PostBanner"];
   const Layout = layouts[post.layout || defaultLayout];
 

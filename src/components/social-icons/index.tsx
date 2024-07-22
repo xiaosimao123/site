@@ -24,7 +24,7 @@ type SocialIconProps = {
   size?: number;
 };
 
-const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
+function SocialIcon({ kind, href, size = 8 }: SocialIconProps) {
   if (
     !href ||
     (kind === "mail" &&
@@ -47,6 +47,6 @@ const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
       />
     </a>
   );
-};
+}
 
 export default SocialIcon;

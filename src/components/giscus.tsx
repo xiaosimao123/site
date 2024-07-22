@@ -4,7 +4,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useTheme } from "next-themes";
 
 import siteMetadata from "@/data/siteMetadata";
-export const Giscus = () => {
+
+export function Giscus() {
   const giscusConfig = siteMetadata.comment;
   const [enableLoadComments, setEnabledLoadComments] = useState(true);
   const { theme, resolvedTheme } = useTheme();
@@ -56,4 +57,4 @@ export const Giscus = () => {
       <div className="giscus" id={COMMENTS_ID} />
     </div>
   );
-};
+}

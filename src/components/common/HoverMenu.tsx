@@ -1,16 +1,18 @@
 import * as HoverCard from "@radix-ui/react-hover-card";
-import { NavLink } from "./MainNavigation";
+import Image from "next/image";
 import { isExternalUrl } from "@/lib/utils/helpers";
+import { NavLink } from "./MainNavigation";
+
 export function HoverMenu() {
   return (
     <HoverCard.Root>
       <HoverCard.Trigger asChild>
         <a
-          class="group flex h-8 items-center rounded-md bg-transparent px-3 text-sm font-medium leading-none
+          className="group flex h-8 items-center rounded-md bg-transparent px-3 text-sm font-medium leading-none
 text-slate-600 hover:bg-gray-50 hover:text-slate-700 dark:text-slate-300 dark:hover:bg-gray-900 dark:hover:text-slate-200"
           href=""
         >
-          <span class="">content</span>
+          <span className="">content</span>
         </a>
       </HoverCard.Trigger>
       <HoverCard.Portal>
@@ -19,7 +21,7 @@ text-slate-600 hover:bg-gray-50 hover:text-slate-700 dark:text-slate-300 dark:ho
           sideOffset={5}
         >
           <div className="flex flex-col gap-[7px]">
-            <img
+            <Image
               className="block h-[60px] w-[60px] rounded-full"
               src="https://pbs.twimg.com/profile_images/1337055608613253126/r_eiMp2H_400x400.png"
               alt="Radix UI"
