@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable import/no-cycle */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable import/prefer-default-export */
@@ -24,7 +25,7 @@ text-slate-600 hover:bg-gray-50 hover:text-slate-700 dark:text-slate-300 dark:ho
           sideOffset={5}
         >
           <div className="flex flex-col gap-[7px]">
-            <Image
+            <img
               className="block h-[60px] w-[60px] rounded-full"
               src="https://pbs.twimg.com/profile_images/1337055608613253126/r_eiMp2H_400x400.png"
               alt="Radix UI"

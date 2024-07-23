@@ -1,4 +1,4 @@
-import Link from "@/components/Link";
+import Link from "@/components/mdx/Link";
 import Tag from "@/components/Tag";
 import type { Blog } from "contentlayer/generated";
 import siteMetadata from "@/data/siteMetadata";

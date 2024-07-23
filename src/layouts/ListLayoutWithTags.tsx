@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { slug } from "github-slugger";
 import { CoreContent } from "pliny/utils/contentlayer";
 import type { Blog } from "contentlayer/generated";
-import Link from "@/components/Link";
+import Link from "@/components/mdx/Link";
 import Tag from "@/components/Tag";
 import siteMetadata from "@/data/siteMetadata";
 import tagData from "@/data/tag-data.json";

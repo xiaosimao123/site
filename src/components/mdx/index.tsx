@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import type { MDXComponents } from "mdx/types";
-import { components } from "../MDXComponents";
 
 export interface MDXLayoutRenderer {
   code: string;

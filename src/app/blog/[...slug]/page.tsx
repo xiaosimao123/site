@@ -1,13 +1,6 @@
 /* eslint-disable consistent-return */
 import "@/css/prism.css";
 
-import { components } from "@/components/MDXComponents";
-
-import {
-  sortPosts,
-  coreContent,
-  allCoreContent,
-} from "pliny/utils/contentlayer";
 import { allBlogs, allAuthors } from "contentlayer/generated";
 import type { Authors, Blog } from "contentlayer/generated";
 import PostSimple from "@/layouts/PostSimple";
@@ -17,6 +10,12 @@ import { Metadata } from "next";
 import siteMetadata from "@/data/siteMetadata";
 import { notFound } from "next/navigation";
 import { MDXRenderer } from "@/components/mdx";
+import { components } from "@/components/mdx/MDXComponents";
+import {
+  coreContent,
+  sortPosts,
+  allCoreContent,
+} from "@/components/mdx/utils/contentlayer";
 
 const defaultLayout = "PostLayout";
 const layouts = {

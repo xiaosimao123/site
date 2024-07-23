@@ -1,5 +1,5 @@
 import ListLayout from "@/layouts/ListLayoutWithTags";
-import { allCoreContent, sortPosts } from "pliny/utils/contentlayer";
+import { sortPosts, allCoreContent } from "@/components/mdx/utils/contentlayer";
 import { allBlogs } from "contentlayer/generated";
 import { genPageMetadata } from "@/app/seo";
 

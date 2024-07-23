@@ -1,5 +1,5 @@
 import Image from "./Image";
-import Link from "./Link";
+import Link from "./mdx/Link";
 
 function Card({ title, description, imgSrc, href }) {
   return (
