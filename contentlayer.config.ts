@@ -25,7 +25,7 @@ import {
 import rehypeSlug from "rehype-slug"; // h1-h6 标签添加 id
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeKatex from "rehype-katex";
-// import rehypeCitation from 'rehype-citation'
+import rehypeCitation from "rehype-citation";
 import rehypePrismPlus from "rehype-prism-plus";
 import rehypePresetMinify from "rehype-preset-minify";
 import {
