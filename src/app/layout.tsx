@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable react/no-danger */
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/css/globals.css";
@@ -7,8 +9,8 @@ import SectionContainer from "@/components/SectionContainer";
 import Header from "@/components/Header";
 import { MainNavigation } from "@/components/common/MainNavigation";
 // const inter = Inter({ subsets: ["latin"] });
-// import { GeistSans } from "geist/font/sans";
-// import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import { ColorSchemeProvider } from "../components/ColorSchemeContext";
 
 export const metadata: Metadata = {
@@ -22,7 +24,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html className={`${GeistSans.variable} ${GeistMono.variable} `} lang="en">
+      <head>
+        <meta name="color-scheme" content="light dark" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: /* js */ `
+                const savedTheme = localStorage.getItem('theme') ?? 'system'
+
+                if (savedTheme === 'dark' || (savedTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark')
+                } else {
+                  document.documentElement.classList.remove('dark')
+                }
+          `,
+          }}
+        />
+      </head>
       <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
         <ColorSchemeProvider>
           {/* <script src="https://giscus.app/client.js"

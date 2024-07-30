@@ -5,7 +5,7 @@ html.dark {
     color: hsl(220, 14%, 71%);
     font-family: Menlo, var(--font-geist-mono), "Fira Code", "Fira Mono",
       Consolas, "DejaVu Sans Mono", monospace;
-    font-size: 16px;
+    /* font-size: 16px; */
     direction: ltr;
     text-align: left;
     white-space: pre;
