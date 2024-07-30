@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-import "@/css/prism.css";
+// import "@/css/prism.css";
 
 import { allBlogs, allAuthors } from "contentlayer/generated";
 import type { Authors, Blog } from "contentlayer/generated";
@@ -124,6 +124,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
           code={post.body.code}
           toc={post.toc}
         />
+
         {/* <MDXLayoutRenderer
           code={post.body.code}
           components={components}

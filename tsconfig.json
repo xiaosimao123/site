@@ -22,11 +22,18 @@
       "@/*": ["src/*"],
       "@/components/*": ["src/components/*"],
       "@/contentlayer/*": ["src/contentlayer/*"],
+      "@/lib/*": [
+        "src/lib/*"
+      ],
+      "@/css": [
+        "src/css/*"
+      ],
       "@/data/*": ["data/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     }
   },
   "include": [
+    "next.config.js",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",

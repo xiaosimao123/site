@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "@/css/tailwind.css";
+import "@/css/globals.css";
+
 import React from "react";
 import SectionContainer from "@/components/SectionContainer";
 import Header from "@/components/Header";
 import { MainNavigation } from "@/components/common/MainNavigation";
 // const inter = Inter({ subsets: ["latin"] });
+// import { GeistSans } from "geist/font/sans";
+// import { GeistMono } from "geist/font/mono";
+import { ColorSchemeProvider } from "../components/ColorSchemeContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +24,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
-        {/* <script src="https://giscus.app/client.js"
+        <ColorSchemeProvider>
+          {/* <script src="https://giscus.app/client.js"
         data-repo="[在此输入仓库]"
         data-repo-id="[在此输入仓库 ID]"
         data-category="[在此输入分类名]"
@@ -35,22 +40,23 @@ export default function RootLayout({
         crossOrigin="anonymous"
         async>
         </script> */}
-        <MainNavigation />
-        {/* <SectionContainer>
+          <MainNavigation />
+          {/* <SectionContainer>
           <div className="flex h-screen flex-col justify-between font-sans">
 
             <main className="mb-auto">{children}</main>
           </div>
         </SectionContainer> */}
-        <div className="flex min-h-screen flex-col justify-between">
-          <main
-            className="relative pt-16"
-            style={{ scrollPaddingTop: "150px" }}
-          >
-            <SectionContainer>{children}</SectionContainer>
-          </main>
-          {/* <Footer /> */}
-        </div>
+          <div className="flex min-h-screen flex-col justify-between">
+            <main
+              className="relative pt-16"
+              style={{ scrollPaddingTop: "150px" }}
+            >
+              <SectionContainer>{children}</SectionContainer>
+            </main>
+            {/* <Footer /> */}
+          </div>
+        </ColorSchemeProvider>
       </body>
     </html>
   );

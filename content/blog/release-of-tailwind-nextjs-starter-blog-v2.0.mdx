@@ -53,7 +53,7 @@ Typescript is also a perfect match with our new type-safe markdown processor - C
 
 First, a content source is defined, specifiying the name of the document type, the source where it is located along with the frontmatter fields and any additional computed fields that should be generated as part of the process.
 
-```ts:contentlayer.config.ts
+```ts 
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',
   filePathPattern: 'blog/**/*.mdx',
@@ -111,7 +111,7 @@ To solve this, I have abstracted the logic to a separate repository - [Pliny](ht
 
 Choose your preferred service by modifying `siteMetadata.js` and changing the appropriate fields. For example to change from Umami Analytics to Plausible, we can change the following fields:
 
-```diff-js:siteMetadata.js
+```
 analytics: {
 -   umamiAnalytics: {
 -     // We use an env variable for this site to avoid other users cloning our analytics ID

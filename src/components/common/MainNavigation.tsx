@@ -23,6 +23,7 @@ import {
   navigationMenuTriggerStyle,
 } from "../ui/navigation-menu";
 import { HoverMenu } from "./HoverMenu";
+import { ColorSchemeSwitcher } from "./ColorSchemeSwitcher";
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
@@ -175,7 +176,7 @@ export function MainNavigation() {
             <div className="px-3">{/* <SearchButton /> */}</div>
           </div>
           <div className="flex items-center pl-2 lg:space-x-2 lg:pl-8">
-            {/* <ColorSchemeSwitcher /> */}
+            <ColorSchemeSwitcher />
             {iconLinks.map(({ label, icon, url }, index) => (
               <NavLink
                 key={index}

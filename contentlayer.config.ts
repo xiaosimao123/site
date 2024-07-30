@@ -1,3 +1,7 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-extraneous-dependencies */
 import {
   defineDocumentType,
   ComputedFields,
@@ -18,18 +22,60 @@ import {
   extractTocHeadings,
 } from "pliny/mdx-plugins/index.js";
 // Rehype packages
-import rehypeSlug from "rehype-slug";
+import rehypeSlug from "rehype-slug"; // h1-h6 标签添加 id
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeKatex from "rehype-katex";
-import rehypeCitation from "rehype-citation";
+// import rehypeCitation from 'rehype-citation'
 import rehypePrismPlus from "rehype-prism-plus";
 import rehypePresetMinify from "rehype-preset-minify";
-import siteMetadata from "./data/siteMetadata";
 import {
   allCoreContent,
   MDXDocumentDate,
   sortPosts,
 } from "pliny/utils/contentlayer.js";
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeShikiji from "rehype-shikiji";
+
+import highlight from "rehype-highlight";
+import {
+  rehypePrettyCodeClasses,
+  rehypePrettyCodeOptions,
+} from "./src/lib/rehyePrettyCode";
+import siteMetadata from "./data/siteMetadata";
+
+const rehypeoptions = {
+  // themes: ['one-dark-pro', 'one-light-pro'],
+  // theme: 'one-dark-pro', // 'github-dark-dimmed' is default
+  defaultLang: "tsx",
+  // theme: {
+  //   dark: 'one-light-pro',
+  //   light: 'github-light',
+  // },
+  theme: "one-dark-pro",
+  // themes: {
+  //   light: 'one-light-pro',
+  //   dark: 'one-dark-pro',
+
+  //   // any number of themes
+  // },
+  // onVisitLine(node) {
+  //   if (node.children.length === 0) {
+  //     // if code block has a empty line, add a space instead of keeping it blank
+  //     node.children = [{ type: 'text', value: ' ' }]
+  //   }
+  // },
+  // onVisitHighlightedLine(node) {
+  //   const nodeClass = node.properties.className
+  //   console.log('Highlighted Line', { node })
+  //   if (nodeClass && nodeClass.length > 0) {
+  //     node.properties.className.push('line--highlighted')
+  //   } else {
+  //     node.properties.className = ['line--highlighted']
+  //   }
+  // },
+  // onVisitHighlightedWord(node) {
+  //   node.properties.className = ['word--highlighted']
+};
 
 const root = process.cwd();
 
@@ -151,11 +197,15 @@ export default makeSource({
   contentDirPath: "content",
   documentTypes: [Blog, Authors],
   mdx: {
+    esbuildOptions(options) {
+      options.target = "esnext";
+      return options;
+    },
     cwd: process.cwd(),
     remarkPlugins: [
       remarkExtractFrontmatter,
       remarkGfm,
-      remarkCodeTitles,
+      // remarkCodeTitles,
       [remarkFootnotes, { inlineNotes: true }],
       remarkMath,
       remarkImgToJsx,
@@ -166,6 +216,9 @@ export default makeSource({
       rehypeKatex,
       // @ts-ignore
       [rehypeCitation, { path: path.join(root, "data"), linkCitations: true }],
+      // highlight,
+      // [rehypePrettyCode, rehypePrettyCodeOptions],
+      // [rehypePrettyCodeClasses],
       [rehypePrismPlus, { defaultLanguage: "js", ignoreMissing: true }],
       // @ts-ignore
       rehypePresetMinify,

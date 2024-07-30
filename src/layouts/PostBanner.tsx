@@ -51,7 +51,7 @@ export default function PostMinimal({
               <PageTitle>{title}</PageTitle>
             </div>
           </div> */}
-          <div className="prose max-w-none py-4 dark:prose-invert">
+          <div className="prose prose-lg    max-w-none py-4 dark:prose-invert">
             {children}
           </div>
           {siteMetadata.comments && (

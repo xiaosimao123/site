@@ -1,3 +1,5 @@
+/* eslint-disable global-require */
+
 // @ts-check
 const { fontFamily } = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
@@ -19,11 +21,16 @@ const config: Config = {
         13: "3.25rem",
         14: "3.5rem",
       },
+      screens: {
+        "1.5xl": "1440px",
+      },
       fontFamily: {
-        sans: ["var(--font-space-grotesk)", ...fontFamily.sans],
+        sans: ["var(--font-geist-sans)"],
+        mono: ["var(--font-geist-mono)"],
       },
       colors: {
-        primary: colors.purple,
+        current: colors.violet,
+        primary: colors.violet,
         gray: colors.gray,
       },
       typography: ({ theme }) => ({
@@ -43,23 +50,41 @@ const config: Config = {
             h3: {
               fontWeight: "600",
             },
+            // code: {
+            //   color: theme('colors.indigo.500'),
+            // },
+            pre: {
+              margin: 0,
+              padding: 0,
+              backgroundColor: "var(--tw-prose-pre-code)",
+            },
             code: {
-              color: theme("colors.indigo.500"),
+              fontWeight: "600",
+              color: theme("colors.primary.600"),
             },
           },
         },
         invert: {
           css: {
-            a: {
-              color: theme("colors.primary.500"),
-              "&:hover": {
-                color: `${theme("colors.primary.400")}`,
-              },
-              code: { color: theme("colors.primary.400") },
-            },
-            "h1,h2,h3,h4,h5,h6": {
-              color: theme("colors.gray.100"),
-            },
+            // a: {
+            //   color: theme('colors.primary.500'),
+            //   '&:hover': {
+            //     color: `${theme('colors.primary.400')}`,
+            //   },
+            //   code: { color: theme('colors.primary.400') },
+            // },
+            // 'h1,h2,h3,h4,h5,h6': {
+            //   color: theme('colors.gray.100'),
+            // },
+            // pre: {
+            //   margin: 0,
+            //   padding: 0,
+            //   backgroundColor: 'var(--tw-prose-pre-bg)',
+            // },
+            // code: {
+            //   fontWeight: '600',
+            //   color: theme('colors.primary.600'),
+            // },
           },
         },
       }),

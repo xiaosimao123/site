@@ -25,7 +25,7 @@ See [upgrade guide](#upgrade-guide) below if you are migrating from v0 version o
 
 You can easily modify the theme color by changing the primary attribute in the tailwind config file:
 
-```js:tailwind.config.js
+```js 
 theme: {
     colors: {
       primary: colors.teal,
@@ -129,7 +129,7 @@ export default function ExampleLayout({ frontMatter, children }) {
 
 Use the `layout` frontmatter field to specify the template you want to map the markdown post to. Here's how the frontmatter of this post looks like:
 
-```
+```js
 ---
 title: 'New features in v1'
 date: '2021-05-26   '
@@ -242,7 +242,7 @@ Information on authors is now split from `siteMetadata.js` and stored in its own
 
 Here's how an author markdown file might look like:
 
-```md:default.md
+```
 ---
 name: Tails Azimuth
 avatar: /static/images/avatar.png
