@@ -1,4 +1,10 @@
 import Image from "next/image";
+import { ColorScheme, snippetToHtml } from "@/lib/utils/syntax-highlighting";
+import { mapObjectValues, promiseAllProperties } from "@/lib/utils/object";
+import {
+  codeSnippets,
+  CodeSnippets,
+} from "@/components/landing-page/HowItWorks";
 
 export default function Home() {
   return (
@@ -111,3 +117,24 @@ export default function Home() {
     </main>
   );
 }
+
+// export type PreprocessedCodeSnippets = Record<ColorScheme, CodeSnippets>
+
+// export const htmlForCodeSnippets = (
+//   colorScheme: ColorScheme
+// ): Promise<CodeSnippets> =>
+//   promiseAllProperties(
+//     mapObjectValues(
+//       codeSnippets,
+//       (_key, snippets) =>
+//         Promise.all(
+//           snippets.map(({ content, file, lines }) =>
+//             snippetToHtml(content, colorScheme).then((_) => ({
+//               file,
+//               lines,
+//               content: _,
+//             }))
+//           )
+//         ) as any // TODO: fix type
+//     )
+//   )

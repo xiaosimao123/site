@@ -1,3 +1,9 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/no-unstable-nested-components */
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable consistent-return */
 // import "@/css/prism.css";
 
@@ -8,7 +14,6 @@ import PostLayout from "@/layouts/PostLayout";
 import PostBanner from "@/layouts/PostBanner";
 import { Metadata } from "next";
 import siteMetadata from "@/data/siteMetadata";
-import { notFound } from "next/navigation";
 import { MDXRenderer } from "@/components/mdx";
 import { components } from "@/components/mdx/MDXComponents";
 import {
@@ -16,8 +21,25 @@ import {
   sortPosts,
   allCoreContent,
 } from "@/components/mdx/utils/contentlayer";
+import { useEffect, useMemo, useState } from "react";
 
-const defaultLayout = "PostLayout";
+import { promiseAllProperties } from "@/lib/utils/object";
+import {
+  CodeSnippets,
+  codeSnippets,
+} from "@/lib/utils/blog/beta-post-snippets";
+import { htmlForCodeSnippets, PreprocessedCodeSnippets } from "@/app/page";
+import { CodeWindow } from "@/components/landing-page/CodeWindow";
+import { useColorScheme } from "@/components/ColorSchemeContext";
+import { notFound } from "next/navigation";
+import Code from "@/components/mdx/ui/Code";
+import {
+  ColorScheme,
+  snippetToHtml,
+} from "@/components/mdx/ui/syntax-highlighting";
+import { useLiveReload } from "next-contentlayer/hooks";
+
+const defaultLayout = "PostSimple";
 const layouts = {
   PostSimple,
   PostLayout,
@@ -81,7 +103,17 @@ export const generateStaticParams = async () => {
   return paths;
 };
 
+export type PreprocessedCodeSnippetsRemark = Record<ColorScheme, CodeSnippets>;
+
+type BetaSnippets = {
+  remark: PreprocessedCodeSnippetsRemark;
+  contentlayer: PreprocessedCodeSnippets;
+};
+
+// const devcache_betaSnippets: BetaSnippets | null = null
+
 export default async function Page({ params }: { params: { slug: string[] } }) {
+  // useLiveReload()
   const slug = decodeURI(params.slug.join("/"));
   // Filter out drafts in production
   const sortedCoreContents = allCoreContent(sortPosts(allBlogs));
@@ -107,6 +139,61 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
   // const Layout = layouts["PostBanner"];
   const Layout = layouts[post.layout || defaultLayout];
 
+  // const preferredColorScheme = useColorScheme()
+  // const [colorScheme, setColorScheme] = useState<'light' | 'dark'>('light')
+
+  // useEffect(() => {
+  //   if (preferredColorScheme === 'system') {
+  //     setColorScheme(
+  //       window.matchMedia &&
+  //         window.matchMedia('(prefers-color-scheme: dark)').matches
+  //         ? 'dark'
+  //         : 'light'
+  //     )
+  //   } else {
+  //     setColorScheme(preferredColorScheme)
+  //   }
+  // }, [preferredColorScheme])
+  // const devcache_betaSnippets: BetaSnippets | null = null
+  // const betaSnippets: BetaSnippets | null = devcache_betaSnippets
+
+  const betaSnippets = await promiseAllProperties({
+    remark: promiseAllProperties<PreprocessedCodeSnippetsRemark>({
+      light: htmlForCodeSnippetsRemark("light"),
+      dark: htmlForCodeSnippetsRemark("dark"),
+    }),
+  });
+
+  // devcache_betaSnippets = betaSnippets
+  // }
+  const BetaCodeWindow = {
+    Remark: () => <CodeWindow snippets={betaSnippets.remark.dark} />,
+  };
+
+  // const BetaCodeWindow = useMemo(
+  //   () => {
+  //     ;() => {
+  //       betaSnippets
+  //     }
+  //   },
+  //   // betaSnippets
+  //   //   ? {
+  //   //       Remark: () => <CodeWindow snippets={betaSnippets.remark.light} />,
+  //   //       ContentlayerConfig: () => (
+  //   //         <CodeWindow
+  //   //           snippets={betaSnippets.contentlayer.light.howItWorksStep1}
+  //   //         />
+  //   //       ),
+  //   //       ContentlayerNext: () => (
+  //   //         <CodeWindow
+  //   //           snippets={betaSnippets.contentlayer.light.howItWorksStep3}
+  //   //         />
+  //   //       ),
+  //   //     }
+  //   //   : ({} as any),
+  //   [betaSnippets, 'light']
+  // )
+
   return (
     <>
       {/* <script
@@ -120,7 +207,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
         prev={prev}
       >
         <MDXRenderer
-          components={components}
+          components={{ ...components, BetaCodeWindow }}
           code={post.body.code}
           toc={post.toc}
         />
@@ -134,3 +221,16 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
     </>
   );
 }
+
+const htmlForCodeSnippetsRemark = (
+  colorScheme: ColorScheme,
+): Promise<CodeSnippets> =>
+  Promise.all(
+    codeSnippets.map(({ content, file, lines }) =>
+      snippetToHtml(content, colorScheme).then((_) => ({
+        file,
+        lines,
+        content: _,
+      })),
+    ),
+  ) as any; // TODO: fix type

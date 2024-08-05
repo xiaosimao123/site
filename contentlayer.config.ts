@@ -34,7 +34,7 @@ import {
   sortPosts,
 } from "pliny/utils/contentlayer.js";
 import rehypePrettyCode from "rehype-pretty-code";
-import rehypeShikiji from "rehype-shikiji";
+// import rehypeShikiji from "rehype-shikiji";
 
 import highlight from "rehype-highlight";
 import {

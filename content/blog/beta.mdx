@@ -1,0 +1,60 @@
+---
+title: 'Introducing Contentlayer (Beta): Content Made Easy for Developers'
+summary: 'Working with content data (e.g. Markdown files or CMS) is a surprisingly difficult and laborious task when developing modern sites (e.g. with Next.js). Contentlayer is a content SDK that aims to make content easy for developers.'
+date: 2022-04-21
+---
+
+<TLDR>
+
+Working with content data (e.g. Markdown files or CMS) is a surprisingly difficult and laborious task when developing modern sites (e.g. with Next.js). Contentlayer is a <Dashed label="content SDK" tooltip="A content SDK simplifies working with structured content as data in your site/application" /> that aims to make content easy for developers with a focus on great DX and performance.
+
+We're very excited to officially release Contentlayer in beta after many months of alpha testing and already being used in over 300 projects.
+
+<div className='mt-8'>
+
+- [Motivation: Thinking of Content as Data](#motivation-thinking-of-content-as-data)
+  - [DIY Example with Next.js + Markdown](#diy-example-with-nextjs-markdown)
+- [Introducing Contentlayer](#introducing-contentlayer)
+  - [How Contentlayer Works](#how-contentlayer-works)
+  - [Playground: Try it Yourself](#playground-try-it-yourself)
+  - [Build Performance Comparison](#build-performance-comparison-contentlayer-vs-diy-and-gatsby)
+- [The Future of Content(layer)](#the-future-of-contentlayer)
+
+</div>
+
+</TLDR>
+
+<Video
+  thumbnail={{
+    url: '/static/images/contentlayer-in-five-minutes.png',
+    alt: 'Intro to Contentlayer Video Thumbnail',
+    width: 2560,
+    height: 1440,
+  }}
+  videoId="58Pj4a4Us7A"
+/>
+
+## Motivation: Thinking of Content as Data
+
+How we build content-driven web experiences [has evolved significantly](/blog/working-with-content-is-hard-for-developers) over the past three decades. From monolithic CMSs (like Wordpress) over template-based site generators (like Jekyll) to modern web frameworks (like Next.js).
+
+While developers gained more flexibility in the way they can design and structure their site - it also came at the cost of having to take responsibility over how to process and serve the content.
+
+<ContentStack
+  content={{ icons: ['markdown', 'contentful'], label: 'Local/Remote Content' }}
+  processor={{ icons: ['question'], label: 'Custom Content Processor' }}
+  pages={{ icons: ['react'], label: 'React Pages' }}
+  decoupled={true}
+/>
+
+Since most modern site frameworks (like Next.js, Remix etc) are "content agnostic", it's the responsibility of the developer to provide the **content as data** to the application in order to render it. This either means consuming the content data from an API (e.g. when using a headless CMS) or doing some form of manual **content pre-processing** which converts the raw content files (e.g. Markdown) into JSON data.
+
+This content pre-processing step can be surprisingly difficult as the following example illustrates.
+
+### DIY Example with Next.js + Markdown
+
+Let's look at a concrete example without Contentlayer (see [source on GitHub](https://github.com/contentlayerdev/contentlayer-benchmarks/tree/main/next-remark)). When building a website using Next.js with local Markdown files as your content source, you’d have to develop a mechanism that converted those Markdown files into data that you could use in your Next.js pages.
+
+<div className="my-8">
+  <BetaCodeWindow.Remark />
+</div>

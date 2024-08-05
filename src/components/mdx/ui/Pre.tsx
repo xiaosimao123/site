@@ -160,7 +160,7 @@ function Pre({ children, className, ...props }: Props) {
             className={clsx(
               "hidden rounded-md border bg-transparent p-2 transition ease-in focus:outline-none group-hover:flex",
               {
-                "border-purple-400": copied,
+                "border-purple-400 dark:text-purple-400": copied,
                 " focus:ring-4 ": !copied,
               },
             )}
@@ -168,8 +168,8 @@ function Pre({ children, className, ...props }: Props) {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className={clsx("pointer-events-none h-4 w-4", {
-                "text-purple-400 dark:text-gray-400": !copied,
-                "text-purple-400": copied,
+                "text-purple-400 dark:text-purple-400": !copied,
+                "text-purple-400 ": copied,
               })}
               fill="none"
               viewBox="0 0 14 14"

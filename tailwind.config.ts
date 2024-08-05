@@ -36,6 +36,16 @@ const config: Config = {
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
+            pre: {
+              // fontFamily: {
+              //   // sans: ['var(--font-space-grotesk)', ...fontFamily.sans],
+              //   mono: ['var(--font-geist-mono)'],
+              // },
+              // fontWeight: 600,
+              // fontFamily:var(--font-geist-sans),
+              // marginTop: 0,
+              // marginBottom: 0,
+            },
             a: {
               color: theme("colors.primary.500"),
               "&:hover": {
@@ -50,17 +60,11 @@ const config: Config = {
             h3: {
               fontWeight: "600",
             },
-            // code: {
-            //   color: theme('colors.indigo.500'),
-            // },
-            pre: {
-              margin: 0,
-              padding: 0,
-              backgroundColor: "var(--tw-prose-pre-code)",
-            },
             code: {
-              // fontWeight: '600',
+              fontWeight: "600",
               color: theme("colors.primary.600"),
+              borderColor: theme("colors.primary.300"),
+              backgroundColor: theme("colors.primary.100"),
             },
           },
         },

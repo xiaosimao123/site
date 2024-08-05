@@ -3,6 +3,9 @@ const path = require("path");
 const { withContentlayer } = require("next-contentlayer");
 
 const nextConfig = withContentlayer({
+  experimental: {
+    serverComponentsExternalPackages: ["shiki-twoslash"],
+  },
   reactStrictMode: true,
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   eslint: {
