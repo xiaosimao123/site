@@ -24,26 +24,26 @@ export function dateSortDesc(a: string, b: string) {
 /**
  * Sorts a list of MDX documents by date in descending order
  *
- * @param {MDXDocumentDate[]} allBlogs
+ * @param {MDXDocumentDate[]} allPosts
  * @param {string} [dateKey='date']
  * @return {*}
  */
 export function sortPosts<T extends MDXDocumentDate>(
-  allBlogs: T[],
+  allPosts: T[],
   dateKey: string = "date",
 ) {
-  return allBlogs.sort((a, b) => dateSortDesc(a[dateKey], b[dateKey]));
+  return allPosts.sort((a, b) => dateSortDesc(a[dateKey], b[dateKey]));
 }
 
 /**
  * Kept for backwards compatibility
  * Please use `sortPosts` instead
  * @deprecated
- * @param {MDXBlog[]} allBlogs
+ * @param {MDXBlog[]} allPosts
  * @return {*}
  */
-export function sortedBlogPost(allBlogs: MDXDocumentDate[]) {
-  return sortPosts(allBlogs);
+export function sortedBlogPost(allPosts: MDXDocumentDate[]) {
+  return sortPosts(allPosts);
 }
 
 type ConvertUndefined<T> = OrNull<{

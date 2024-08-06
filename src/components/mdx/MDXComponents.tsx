@@ -12,6 +12,8 @@ import { TLDR } from "../TLDR";
 import { Video } from "../landing-page/Video";
 import { ContentStack } from "../ContentStack";
 import { H2, H3, H4 } from "../common/Headings";
+import { Support } from "../landing-page/Support";
+import { Playground } from "../landing-page/Playground";
 
 export const components: MDXComponents = {
   H2,
@@ -27,4 +29,6 @@ export const components: MDXComponents = {
   pre: Pre,
   table: TableWrapper,
   BlogNewsletterForm,
+  Support,
+  Playground,
 };

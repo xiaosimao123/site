@@ -11,6 +11,15 @@ import { MainNavigation } from "@/components/common/MainNavigation";
 // const inter = Inter({ subsets: ["latin"] });
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import {
+  codeSnippets,
+  CodeSnippets,
+} from "@/components/landing-page/HowItWorks";
+import { mapObjectValues, promiseAllProperties } from "@/lib/utils/object";
+import {
+  ColorScheme,
+  snippetToHtml,
+} from "@/components/mdx/ui/syntax-highlighting";
 import { ColorSchemeProvider } from "../components/ColorSchemeContext";
 
 export const metadata: Metadata = {
@@ -79,3 +88,24 @@ export default function RootLayout({
     </html>
   );
 }
+
+// export type PreprocessedCodeSnippets = Record<ColorScheme, CodeSnippets>
+
+// export const htmlForCodeSnippets = (
+//   colorScheme: ColorScheme
+// ): Promise<CodeSnippets> =>
+//   promiseAllProperties(
+//     mapObjectValues(
+//       codeSnippets,
+//       (_key, snippets) =>
+//         Promise.all(
+//           snippets.map(({ content, file, lines }) =>
+//             snippetToHtml(content, colorScheme).then((_) => ({
+//               file,
+//               lines,
+//               content: _,
+//             }))
+//           )
+//         ) as any // TODO: fix type
+//     )
+//   )

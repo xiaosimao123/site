@@ -108,12 +108,12 @@ const computedFields: ComputedFields = {
 /**
  * Count the occurrences of all tags across blog posts and write to json file
  */
-function createTagCount(allBlogs: any[]) {
+function createTagCount(allPosts: any[]) {
   const tagCount: Record<string, number> = {};
-  allBlogs.forEach((file) => {
+  allPosts.forEach((file) => {
     if (file.tags && file.draft !== true) {
       file.tags.forEach((tag: any) => {
-        const formattedTag = GithubSlugger.slug(tag);
+        const formattedTag = tag;
         if (formattedTag in tagCount) {
           tagCount[formattedTag] += 1;
         } else {
@@ -125,21 +125,21 @@ function createTagCount(allBlogs: any[]) {
   writeFileSync("./data/tag-data.json", JSON.stringify(tagCount));
 }
 
-function createSearchIndex(allBlogs: MDXDocumentDate[]) {
+function createSearchIndex(allPosts: MDXDocumentDate[]) {
   if (
     siteMetadata?.search?.provider === "kbar" &&
     siteMetadata.search.kbarConfig.searchDocumentsPath
   ) {
     writeFileSync(
       `public/${siteMetadata.search.kbarConfig.searchDocumentsPath}`,
-      JSON.stringify(allCoreContent(sortPosts(allBlogs))),
+      JSON.stringify(allCoreContent(sortPosts(allPosts))),
     );
     console.log("Local search index generated...");
   }
 }
 
-export const Blog = defineDocumentType(() => ({
-  name: "Blog",
+export const Post = defineDocumentType(() => ({
+  name: "Post",
   filePathPattern: "blog/**/*.mdx",
   contentType: "mdx",
   fields: {
@@ -153,7 +153,7 @@ export const Blog = defineDocumentType(() => ({
     authors: { type: "list", of: { type: "string" } },
     layout: { type: "string" },
     bibliography: { type: "json" },
-    canonicalUrl: { type: "string" },
+    url: { type: "string" },
   },
   computedFields: {
     ...computedFields,
@@ -195,7 +195,7 @@ export const Authors = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Blog, Authors],
+  documentTypes: [Post, Authors],
   mdx: {
     esbuildOptions(options) {
       options.target = "esnext";
@@ -225,8 +225,8 @@ export default makeSource({
     ],
   },
   onSuccess: async (importData) => {
-    const { allBlogs } = await importData();
-    createTagCount(allBlogs);
-    createSearchIndex(allBlogs);
+    const { allPosts } = await importData();
+    createTagCount(allPosts);
+    createSearchIndex(allPosts);
   },
 });

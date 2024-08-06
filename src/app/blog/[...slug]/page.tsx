@@ -7,8 +7,8 @@
 /* eslint-disable consistent-return */
 // import "@/css/prism.css";
 
-import { allBlogs, allAuthors } from "contentlayer/generated";
-import type { Authors, Blog } from "contentlayer/generated";
+import { allPosts, allAuthors } from "contentlayer/generated";
+import type { Authors, Post } from "contentlayer/generated";
 import PostSimple from "@/layouts/PostSimple";
 import PostLayout from "@/layouts/PostLayout";
 import PostBanner from "@/layouts/PostBanner";
@@ -28,7 +28,7 @@ import {
   CodeSnippets,
   codeSnippets,
 } from "@/lib/utils/blog/beta-post-snippets";
-import { htmlForCodeSnippets, PreprocessedCodeSnippets } from "@/app/page";
+// import { htmlForCodeSnippets, PreprocessedCodeSnippets } from "@/app/page";
 import { CodeWindow } from "@/components/landing-page/CodeWindow";
 import { useColorScheme } from "@/components/ColorSchemeContext";
 import { notFound } from "next/navigation";
@@ -52,7 +52,7 @@ export async function generateMetadata({
   params: { slug: string[] };
 }): Promise<Metadata | undefined> {
   const slug = decodeURI(params.slug.join("/"));
-  const post = allBlogs.find((p) => p.slug === slug);
+  const post = allPosts.find((p) => p.slug === slug);
   const authorList = post?.authors || ["default"];
   const authorDetails = authorList.map((author) => {
     const authorResults = allAuthors.find((p) => p.slug === author);
@@ -98,7 +98,7 @@ export async function generateMetadata({
 }
 
 export const generateStaticParams = async () => {
-  const paths = allBlogs.map((p) => ({ slug: p.slug.split("/") }));
+  const paths = allPosts.map((p) => ({ slug: p.slug.split("/") }));
 
   return paths;
 };
@@ -116,7 +116,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
   // useLiveReload()
   const slug = decodeURI(params.slug.join("/"));
   // Filter out drafts in production
-  const sortedCoreContents = allCoreContent(sortPosts(allBlogs));
+  const sortedCoreContents = allCoreContent(sortPosts(allPosts));
   const postIndex = sortedCoreContents.findIndex((p) => p.slug === slug);
   if (postIndex === -1) {
     return notFound();
@@ -124,7 +124,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
 
   const prev = sortedCoreContents[postIndex + 1];
   const next = sortedCoreContents[postIndex - 1];
-  const post = allBlogs.find((p) => p.slug === slug) as Blog;
+  const post = allPosts.find((p) => p.slug === slug) as Post;
   const authorList = post?.authors || ["default"];
   const authorDetails = authorList.map((author) => {
     const authorResults = allAuthors.find((p) => p.slug === author);

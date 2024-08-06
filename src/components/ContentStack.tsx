@@ -1,3 +1,5 @@
+"use client";
+
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable @typescript-eslint/no-redeclare */
 /* eslint-disable no-unneeded-ternary */

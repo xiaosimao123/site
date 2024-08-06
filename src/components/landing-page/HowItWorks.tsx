@@ -1,3 +1,5 @@
+import { IconName } from "../common/Icon";
+
 export const codeSnippets = {
   howItWorksStep1: [
     {
@@ -14,7 +16,7 @@ const Post = defineDocumentType(() => ({
     date: { type: 'date', required: true }
   },
   computedFields: {
-    url: { type: 'string', resolve: (post) => \`/posts/\${post._raw.flattenedPath}\` },
+    
   },
 }))
 

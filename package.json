@@ -55,6 +55,7 @@
     "remark-gfm": "^3.0.1",
     "remark-math": "^5.1.1",
     "tailwind-merge": "^2.4.0",
+    "@stackblitz/sdk": "^1.7.0-alpha.3",
     "tailwindcss": "^3.4.1",
     "unist-util-visit": "^5.0.0",
     "vfile": "^6.0.2"

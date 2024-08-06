@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import Bleed from "pliny/ui/Bleed";
 import { CoreContent } from "pliny/utils/contentlayer";
-import type { Blog } from "contentlayer/generated";
+import type { Post } from "contentlayer/generated";
 import Comments from "@/components/Comments";
 import Link from "@/components/mdx/Link";
 import PageTitle from "@/components/PageTitle";
@@ -11,7 +11,7 @@ import ScrollTopAndComment from "@/components/ScrollTopAndComment";
 import Image from "@/components/Image";
 
 interface LayoutProps {
-  content: CoreContent<Blog>;
+  content: CoreContent<Post>;
   children: ReactNode;
   next?: { path: string; title: string };
   prev?: { path: string; title: string };

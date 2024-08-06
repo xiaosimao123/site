@@ -2,7 +2,7 @@ import { slug } from "github-slugger";
 import { allCoreContent } from "@/components/mdx/utils/contentlayer";
 import siteMetadata from "@/data/siteMetadata";
 import ListLayout from "@/layouts/ListLayoutWithTags";
-import { allBlogs } from "contentlayer/generated";
+import { allPosts } from "contentlayer/generated";
 import tagData from "@/data/tag-data.json";
 import { genPageMetadata } from "@/app/seo";
 import { Metadata } from "next";
@@ -39,7 +39,7 @@ export default function TagPage({ params }: { params: { tag: string } }) {
   // Capitalize first letter and convert space to dash
   const title = tag[0].toUpperCase() + tag.split(" ").join("-").slice(1);
   const filteredPosts = allCoreContent(
-    allBlogs.filter(
+    allPosts.filter(
       (post) =>
         post.draft !== true &&
         post.tags &&
