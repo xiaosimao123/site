@@ -13,8 +13,8 @@ import {
   useMemo,
   useCallback,
 } from "react";
-// import { ColorScheme } from '../utils/syntax-highlighting'
-type ColorScheme = "light" | "dark";
+import { ColorScheme } from "./mdx/ui/syntax-highlighting";
+
 const ColorSchemeContext = createContext<"light" | "dark" | "system">("light");
 const UpdateColorSchemeContext = createContext<
   (colorScheme: "light" | "dark" | "system") => void
@@ -29,12 +29,12 @@ export const ColorSchemeProvider: FC<React.PropsWithChildren<{}>> = ({
   const initalColorScheme = useMemo(
     () =>
       typeof window !== "undefined"
-        ? ((localStorage.getItem("theme") as ColorScheme | null) ?? "system")
+        ? (localStorage.getItem("theme") as ColorScheme | null) ?? "system"
         : "system",
-    [],
+    []
   );
   const [colorScheme, setColorScheme] = useState<"light" | "dark" | "system">(
-    initalColorScheme,
+    initalColorScheme
   );
 
   const updateColorScheme = useCallback(
@@ -62,7 +62,7 @@ export const ColorSchemeProvider: FC<React.PropsWithChildren<{}>> = ({
         localStorage.theme = newColorScheme;
       }
     },
-    [colorScheme],
+    [colorScheme]
   );
 
   useEffect(() => {
@@ -70,7 +70,7 @@ export const ColorSchemeProvider: FC<React.PropsWithChildren<{}>> = ({
     if (colorScheme === "system") {
       window
         .matchMedia("(prefers-color-scheme: dark)")
-        .addEventListener("change", () => updateColorScheme("system"));
+        .addEventListener("change", () => updateColorScheme("s"));
     }
   }, [colorScheme, updateColorScheme]);
 

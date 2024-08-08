@@ -14,8 +14,27 @@ import { ContentStack } from "../ContentStack";
 import { H2, H3, H4 } from "../common/Headings";
 import { Support } from "../landing-page/Support";
 import { Playground } from "../landing-page/Playground";
+import { Callout } from "../common/Callout";
+import { DocsCard as Card } from "../docs/DocsCard";
+import { ChevronLink } from "../common/ChevronLink";
+import {
+  OptionDescription,
+  OptionsTable,
+  OptionTitle,
+} from "../docs/OptionsTable";
 
-export const components: MDXComponents = {
+interface CodeHeaderProps {
+  text: string;
+}
+export function CodeHeader({ text }: CodeHeaderProps) {
+  return (
+    <div className="rounded-t-md bg-zinc-200 px-4 py-2 font-mono text-sm text-neutral-700 dark:bg-zinc-700 dark:text-neutral-300">
+      {text}
+    </div>
+  );
+}
+
+export const mdxComponents: MDXComponents = {
   H2,
   H3,
   H4,
@@ -31,4 +50,11 @@ export const components: MDXComponents = {
   BlogNewsletterForm,
   Support,
   Playground,
+  Callout,
+  ChevronLink,
+  Card,
+  OptionsTable,
+  OptionTitle,
+  OptionDescription,
+  CodeHeader,
 };

@@ -1,12 +1,8 @@
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable eqeqeq */
-/* eslint-disable react/function-component-definition */
-/* eslint-disable import/prefer-default-export */
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { useState, useEffect } from "react";
-
-import { Icon } from "./Icon";
 import { useColorScheme, useUpdateColorScheme } from "../ColorSchemeContext";
+import { Icon } from "./Icon";
 
 export const ColorSchemeSwitcher = () => {
   const preferredColorScheme = useColorScheme();
@@ -30,7 +26,7 @@ export const ColorSchemeSwitcher = () => {
         window.matchMedia &&
           window.matchMedia("(prefers-color-scheme: dark)").matches
           ? "dark"
-          : "light",
+          : "light"
       );
     } else {
       setColorScheme(preferredColorScheme);

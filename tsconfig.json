@@ -24,12 +24,12 @@
     "paths": {
       "@/*": ["src/*"],
       "@/components/*": ["src/components/*"],
-      "@/contentlayer/*": ["src/contentlayer/*"],
+ 
       "@/lib/*": [
         "src/lib/*"
       ],
-      "@/css": [
-        "src/css/*"
+      "@/styles": [
+        "src/styles/*"
       ],
       "@/data/*": ["data/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]

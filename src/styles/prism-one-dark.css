@@ -1,3 +1,7 @@
+/* stylelint-disable declaration-block-trailing-semicolon */
+/* stylelint-disable declaration-block-trailing-semicolon */
+/* stylelint-disable stylelint-disable-next-line declaration-block-trailing-semicolon */
+
 html.dark {
   code[class*="language-"],
   pre[class*="language-"] {

@@ -1,10 +1,11 @@
+/* eslint-disable import/order */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/no-danger */
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "@/css/globals.css";
+import "@/styles/globals.css";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SectionContainer from "@/components/SectionContainer";
 import Header from "@/components/Header";
 import { MainNavigation } from "@/components/common/MainNavigation";
@@ -21,6 +22,7 @@ import {
   snippetToHtml,
 } from "@/components/mdx/ui/syntax-highlighting";
 import { ColorSchemeProvider } from "../components/ColorSchemeContext";
+import { Footer } from "@/components/common/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -33,12 +35,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className={`${GeistSans.variable} ${GeistMono.variable} `} lang="en">
-      <head>
-        <meta name="color-scheme" content="light dark" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: /* js */ `
+    <ColorSchemeProvider>
+      <html
+        className={`${GeistSans.variable} ${GeistMono.variable} scroll-padding`}
+        lang="en"
+      >
+        <head>
+          <meta name="color-scheme" content="light dark" />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: /* js */ `
                 const savedTheme = localStorage.getItem('theme') ?? 'system'
 
                 if (savedTheme === 'dark' || (savedTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -47,11 +53,11 @@ export default function RootLayout({
                   document.documentElement.classList.remove('dark')
                 }
           `,
-          }}
-        />
-      </head>
-      <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
-        <ColorSchemeProvider>
+            }}
+          />
+        </head>
+
+        <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
           {/* <script src="https://giscus.app/client.js"
         data-repo="[在此输入仓库]"
         data-repo-id="[在此输入仓库 ID]"
@@ -79,13 +85,15 @@ export default function RootLayout({
               className="relative pt-16"
               style={{ scrollPaddingTop: "150px" }}
             >
-              <SectionContainer>{children}</SectionContainer>
+              {/* <SectionContainer> */}
+              {children}
+              {/* </SectionContainer> */}
             </main>
-            {/* <Footer /> */}
+            <Footer />
           </div>
-        </ColorSchemeProvider>
-      </body>
-    </html>
+        </body>
+      </html>
+    </ColorSchemeProvider>
   );
 }
 

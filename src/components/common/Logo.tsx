@@ -1,5 +1,3 @@
-/* eslint-disable react/function-component-definition */
-/* eslint-disable import/prefer-default-export */
 import { FC } from "react";
 
 export const Logo: FC = () => (

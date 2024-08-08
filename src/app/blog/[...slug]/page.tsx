@@ -15,7 +15,7 @@ import PostBanner from "@/layouts/PostBanner";
 import { Metadata } from "next";
 import siteMetadata from "@/data/siteMetadata";
 import { MDXRenderer } from "@/components/mdx";
-import { components } from "@/components/mdx/MDXComponents";
+import { mdxComponents } from "@/components/mdx/MDXComponents";
 import {
   coreContent,
   sortPosts,
@@ -38,6 +38,7 @@ import {
   snippetToHtml,
 } from "@/components/mdx/ui/syntax-highlighting";
 import { useLiveReload } from "next-contentlayer/hooks";
+import SectionContainer from "@/components/SectionContainer";
 
 const defaultLayout = "PostSimple";
 const layouts = {
@@ -207,7 +208,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
         prev={prev}
       >
         <MDXRenderer
-          components={{ ...components, BetaCodeWindow }}
+          components={{ ...mdxComponents, BetaCodeWindow }}
           code={post.body.code}
           toc={post.toc}
         />
@@ -223,7 +224,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
 }
 
 const htmlForCodeSnippetsRemark = (
-  colorScheme: ColorScheme,
+  colorScheme: ColorScheme
 ): Promise<CodeSnippets> =>
   Promise.all(
     codeSnippets.map(({ content, file, lines }) =>
@@ -231,6 +232,6 @@ const htmlForCodeSnippetsRemark = (
         file,
         lines,
         content: _,
-      })),
-    ),
+      }))
+    )
   ) as any; // TODO: fix type

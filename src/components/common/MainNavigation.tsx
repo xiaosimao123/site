@@ -10,7 +10,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { isExternalUrl } from "@/lib/utils/helpers";
 import { cn } from "@/lib/utils";
-import { Logo } from "../Logo";
+import { Logo } from "./Logo";
 import { Icon, IconName } from "./Icon";
 import { Label } from "./Label";
 import {
@@ -36,13 +36,13 @@ const ListItem = React.forwardRef<
       <Link
         ref={ref}
         className={cn(
-          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-          className,
+          "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors",
+          className
         )}
         {...props}
       >
         <div className="text-sm font-medium leading-none">{title}</div>
-        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+        <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
           {children}
         </p>
       </Link>
@@ -95,6 +95,7 @@ const navLinks: Array<NavItem> = [
   // { label: 'Documentation', url: '/docs' },
   //
   // Removing this temporarily, until it is more active.
+  { label: "Doc", url: "/docs" },
   { label: "Blog", url: "/blog" },
   { label: "projects", url: "/projects" },
   { label: "about", url: "/about" },
@@ -149,8 +150,8 @@ export const NavLink: React.FC<{
 
 export function MainNavigation() {
   return (
-    <header className="fixed z-50 w-full bg-white border-b border-gray-200 bg-opacity-90 backdrop-blur backdrop-filter dark:border-gray-800 dark:bg-gray-950">
-      <div className="flex items-center justify-between w-full h-16 px-4 max-w-screen-2xl md:px-8 lg:px-16 mx-auto">
+    <header className="fixed z-50 w-full border-b border-gray-200 bg-white bg-opacity-90 backdrop-blur backdrop-filter dark:border-gray-800 dark:bg-gray-950">
+      <div className="mx-auto flex h-16 w-full max-w-screen-2xl items-center justify-between px-4 md:px-8 lg:px-16">
         <div className="flex items-center space-x-2.5">
           <Link legacyBehavior href="/">
             <a className="flex items-center space-x-2.5 font-bold text-slate-800 no-underline dark:text-white">
@@ -160,7 +161,7 @@ export function MainNavigation() {
             </a>
           </Link>
         </div>
-        <nav className="items-center hidden divide-x divide-gray-200 dark:divide-gray-800 lg:flex">
+        <nav className="hidden items-center divide-x divide-gray-200 lg:flex dark:divide-gray-800">
           <div className="flex items-center pr-2 lg:space-x-4 lg:pr-8">
             {navLinks.map(({ label, url }, index) => (
               <NavLink
