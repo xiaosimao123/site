@@ -35,16 +35,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ColorSchemeProvider>
-      <html
-        className={`${GeistSans.variable} ${GeistMono.variable} scroll-padding`}
-        lang="en"
-      >
-        <head>
-          <meta name="color-scheme" content="light dark" />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: /* js */ `
+    <html
+      className={`${GeistSans.variable} ${GeistMono.variable} scroll-padding`}
+      lang="en"
+    >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: /* js */ `
                 const savedTheme = localStorage.getItem('theme') ?? 'system'
 
                 if (savedTheme === 'dark' || (savedTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -53,12 +51,12 @@ export default function RootLayout({
                   document.documentElement.classList.remove('dark')
                 }
           `,
-            }}
-          />
-        </head>
+          }}
+        />
+      </head>
 
-        <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
-          {/* <script src="https://giscus.app/client.js"
+      <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
+        {/* <script src="https://giscus.app/client.js"
         data-repo="[在此输入仓库]"
         data-repo-id="[在此输入仓库 ID]"
         data-category="[在此输入分类名]"
@@ -73,6 +71,7 @@ export default function RootLayout({
         crossOrigin="anonymous"
         async>
         </script> */}
+        <ColorSchemeProvider>
           <MainNavigation />
           {/* <SectionContainer>
           <div className="flex h-screen flex-col justify-between font-sans">
@@ -91,9 +90,9 @@ export default function RootLayout({
             </main>
             <Footer />
           </div>
-        </body>
-      </html>
-    </ColorSchemeProvider>
+        </ColorSchemeProvider>
+      </body>
+    </html>
   );
 }
 

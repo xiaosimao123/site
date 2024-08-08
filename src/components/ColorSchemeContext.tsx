@@ -70,7 +70,7 @@ export const ColorSchemeProvider: FC<React.PropsWithChildren<{}>> = ({
     if (colorScheme === "system") {
       window
         .matchMedia("(prefers-color-scheme: dark)")
-        .addEventListener("change", () => updateColorScheme("s"));
+        .addEventListener("change", () => updateColorScheme("system"));
     }
   }, [colorScheme, updateColorScheme]);
 
