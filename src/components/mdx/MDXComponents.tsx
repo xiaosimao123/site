@@ -35,9 +35,9 @@ export function CodeHeader({ text }: CodeHeaderProps) {
 }
 
 export const mdxComponents: MDXComponents = {
-  H2,
-  H3,
-  H4,
+  h2: H2,
+  h3: H3,
+  h4: H4,
   ContentStack,
   Video,
   TLDR,

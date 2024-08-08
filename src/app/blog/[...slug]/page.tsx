@@ -196,30 +196,18 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
   // )
 
   return (
-    <>
-      {/* <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      /> */}
-      <Layout
-        content={mainContent}
-        authorDetails={authorDetails}
-        next={next}
-        prev={prev}
-      >
-        <MDXRenderer
-          components={{ ...mdxComponents, BetaCodeWindow }}
-          code={post.body.code}
-          toc={post.toc}
-        />
-
-        {/* <MDXLayoutRenderer
-          code={post.body.code}
-          components={components}
-          toc={post.toc}
-        /> */}
-      </Layout>
-    </>
+    <Layout
+      content={mainContent}
+      authorDetails={authorDetails}
+      next={next}
+      prev={prev}
+    >
+      <MDXRenderer
+        components={{ ...mdxComponents, BetaCodeWindow }}
+        code={post.body.code}
+        toc={post.toc}
+      />
+    </Layout>
   );
 }
 

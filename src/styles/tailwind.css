@@ -19,7 +19,9 @@
     scroll-padding-top: 150px;
   }
 
- 
+  body {
+    @apply h-full bg-white text-slate-500 antialiased dark:bg-gray-950 dark:text-slate-400;
+  }
 
   svg {
     @apply max-w-full;
@@ -119,8 +121,4 @@
   html.dark {
     color-scheme: dark;
   }
-  .dark {
-    color-scheme: dark;
-  }
- 
 }

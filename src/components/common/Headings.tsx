@@ -1,3 +1,5 @@
+"use client";
+
 /* eslint-disable no-return-assign */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/function-component-definition */
@@ -12,7 +14,7 @@ export const H2: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
       onClick={() => (window.location.hash = `#${slug}`)}
       className="group cursor-pointer"
     >
-      <span className="absolute left-8 hidden text-slate-400 dark:text-slate-600 lg:group-hover:inline">
+      <span className="absolute left-8 hidden text-slate-400 lg:group-hover:inline dark:text-slate-600">
         #
       </span>
       {children}
@@ -28,7 +30,7 @@ export const H3: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
       onClick={() => (window.location.hash = `#${slug}`)}
       className="group cursor-pointer"
     >
-      <span className="absolute left-8 hidden text-slate-400 dark:text-slate-600 lg:group-hover:inline">
+      <span className="absolute left-8 hidden text-slate-400 lg:group-hover:inline dark:text-slate-600">
         #
       </span>
       {children}
@@ -44,7 +46,7 @@ export const H4: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
       onClick={() => (window.location.hash = `#${slug}`)}
       className="group cursor-pointer"
     >
-      <span className="absolute left-8 hidden text-slate-400 dark:text-slate-600 lg:group-hover:inline">
+      <span className="absolute left-8 hidden text-slate-400 lg:group-hover:inline dark:text-slate-600">
         #
       </span>
       {children}

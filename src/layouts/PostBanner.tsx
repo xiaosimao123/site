@@ -30,7 +30,7 @@ export default function PostMinimal({
       : "https://picsum.photos/seed/picsum/800/400";
 
   return (
-    <SectionContainer>
+    <>
       <ScrollTopAndComment />
       <article>
         <div>
@@ -51,7 +51,7 @@ export default function PostMinimal({
               <PageTitle>{title}</PageTitle>
             </div>
           </div>
-          <div className="prose prose-lg    max-w-none py-4 dark:prose-invert">
+          <div className="prose blog prose-lg  dark:prose-invert max-w-none py-4">
             {children}
           </div>
           {siteMetadata.comments && (
@@ -90,6 +90,6 @@ export default function PostMinimal({
           </footer>
         </div>
       </article>
-    </SectionContainer>
+    </>
   );
 }

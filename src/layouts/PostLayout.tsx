@@ -12,7 +12,9 @@ import Image from "@/components/Image";
 
 const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/content/${path}`;
 const discussUrl = (path) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(`${siteMetadata.siteUrl}/${path}`)}`;
+  `https://mobile.twitter.com/search?q=${encodeURIComponent(
+    `${siteMetadata.siteUrl}/${path}`
+  )}`;
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   weekday: "long",
@@ -40,7 +42,7 @@ export default function PostLayout({
   const basePath = path.split("/")[0];
 
   return (
-    <SectionContainer>
+    <>
       <ScrollTopAndComment />
       <article>
         <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
@@ -53,7 +55,7 @@ export default function PostLayout({
                     <time dateTime={date}>
                       {new Date(date).toLocaleDateString(
                         siteMetadata.locale,
-                        postDateTemplate,
+                        postDateTemplate
                       )}
                     </time>
                   </dd>
@@ -64,7 +66,7 @@ export default function PostLayout({
               </div>
             </div>
           </header>
-          <div className="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0">
+          <div className="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0 dark:divide-gray-700">
             <dl className="pb-10 pt-6 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
               <dt className="sr-only">Authors</dt>
               <dd>
@@ -97,7 +99,7 @@ export default function PostLayout({
                             >
                               {author.twitter.replace(
                                 "https://twitter.com/",
-                                "@",
+                                "@"
                               )}
                             </Link>
                           )}
@@ -108,8 +110,12 @@ export default function PostLayout({
                 </ul>
               </dd>
             </dl>
-            <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
-              <div className="prose  prose-lg max-w-none pb-8 pt-10 dark:prose-invert">
+            <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0 dark:divide-gray-700">
+              <div
+                className="prose  blog prose-lg dark:prose-invert
+              mx-auto mb-4 w-full max-w-3xl max-w-none shrink p-4 pb-8 pb-8 pt-10 md:mb-8 md:px-8
+              lg:mx-0 lg:max-w-full lg:px-16"
+              >
                 {children}
               </div>
               <div className="pb-6 pt-6 text-sm text-gray-700 dark:text-gray-300">
@@ -127,7 +133,7 @@ export default function PostLayout({
               </div>
             </div>
             <footer>
-              <div className="divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700 xl:col-start-1 xl:row-start-2 xl:divide-y">
+              <div className="divide-gray-200 text-sm font-medium leading-5 xl:col-start-1 xl:row-start-2 xl:divide-y dark:divide-gray-700">
                 {tags && (
                   <div className="py-4 xl:py-8">
                     <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
@@ -178,6 +184,6 @@ export default function PostLayout({
           </div>
         </div>
       </article>
-    </SectionContainer>
+    </>
   );
 }

@@ -87,7 +87,7 @@ export default makeSource({
     ],
     rehypePlugins: [
       rehypeSlug,
-      rehypeAutolinkHeadings,
+      // rehypeAutolinkHeadings,
       rehypeKatex,
       // @ts-ignore
       [rehypeCitation, { path: path.join(root, "data"), linkCitations: true }],

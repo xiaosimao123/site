@@ -84,13 +84,13 @@ const config: Config = {
               },
               code: { color: theme("colors.primary.400") },
             },
-            "h1,h2": {
-              fontWeight: "700",
-              letterSpacing: theme("letterSpacing.tight"),
-            },
-            h3: {
-              fontWeight: "600",
-            },
+            // "h1,h2": {
+            //   fontWeight: "700",
+            //   letterSpacing: theme("letterSpacing.tight"),
+            // },
+            // h3: {
+            //   fontWeight: "600",
+            // },
             code: {
               fontWeight: "600",
               color: theme("colors.primary.600"),
