@@ -41,3 +41,6 @@ package-lock.json
 
 # contentlayer
 .contentlayer
+
+/data/tag-data.json
+/public/search.json
