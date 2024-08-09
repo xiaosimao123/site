@@ -9,6 +9,7 @@ import SectionContainer from "@/components/SectionContainer";
 import siteMetadata from "@/data/siteMetadata";
 import ScrollTopAndComment from "@/components/ScrollTopAndComment";
 import { BlogHeader } from "@/components/blog/BlogHeader";
+import { RelatedPosts } from "@/components/blog/RelatedPosts";
 
 interface LayoutProps {
   content: CoreContent<Blog>;
@@ -50,13 +51,16 @@ export default function PostLayout({
         <div className="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:divide-y-0 dark:divide-gray-700">
           <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0 dark:divide-gray-700">
             <div
-              className="prose  blog 
+              className="prose  
             prose-lg dark:prose-invert mx-auto  mb-4 w-full   max-w-none shrink p-4 pb-8 pt-10
             md:mb-8 md:px-8 lg:mx-0 lg:max-w-full lg:px-16"
             >
               {children}
             </div>
           </div>
+          {content.related_posts && (
+            <RelatedPosts posts={content.related_posts} />
+          )}
           {siteMetadata.comments && (
             <div
               className="pb-6 pt-6 text-center text-gray-700 dark:text-gray-300"

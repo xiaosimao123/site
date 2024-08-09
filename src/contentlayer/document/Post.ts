@@ -1,13 +1,24 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-extraneous-dependencies */
 
-import { ComputedFields, defineDocumentType } from "contentlayer/source-files";
+import {
+  ComputedFields,
+  defineDocumentType,
+  defineNestedType,
+} from "contentlayer/source-files";
 import readingTime from "reading-time";
 import { extractTocHeadings } from "pliny/mdx-plugins/index.js";
 import siteMetadata from "../../../data/siteMetadata";
 
+const RelatedPost = defineNestedType(() => ({
+  name: "RelatedPost",
+  fields: {
+    slug: { type: "string", required: true },
+  },
+}));
 /**
  * Remove yyyy-mm-dd and extension in file path to generate slug
  */
@@ -38,6 +49,7 @@ export const Post = defineDocumentType(() => ({
   name: "Post",
   filePathPattern: "blog/**/*.mdx",
   contentType: "mdx",
+
   fields: {
     title: { type: "string", required: true },
     date: { type: "date", required: true },
@@ -50,6 +62,11 @@ export const Post = defineDocumentType(() => ({
     layout: { type: "string" },
     bibliography: { type: "json" },
     url: { type: "string" },
+    related_posts: {
+      type: "list",
+      of: RelatedPost,
+      required: false,
+    },
   },
   computedFields: {
     ...computedFields,

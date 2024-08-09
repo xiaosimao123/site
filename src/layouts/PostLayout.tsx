@@ -112,8 +112,8 @@ export default function PostLayout({
             </dl>
             <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0 dark:divide-gray-700">
               <div
-                className="prose  blog prose-lg dark:prose-invert
-              mx-auto mb-4 w-full max-w-3xl max-w-none shrink p-4 pb-8 pb-8 pt-10 md:mb-8 md:px-8
+                className="prose    prose-lg dark:prose-invert
+              mx-auto mb-4 w-full max-w-3xl  shrink p-4 pb-8  pt-10 md:mb-8 md:px-8
               lg:mx-0 lg:max-w-full lg:px-16"
               >
                 {children}

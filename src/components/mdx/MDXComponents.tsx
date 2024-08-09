@@ -22,6 +22,7 @@ import {
   OptionsTable,
   OptionTitle,
 } from "../docs/OptionsTable";
+import { Button } from "../common/Button";
 
 interface CodeHeaderProps {
   text: string;
@@ -56,5 +57,6 @@ export const mdxComponents: MDXComponents = {
   OptionsTable,
   OptionTitle,
   OptionDescription,
+  Button,
   CodeHeader,
 };
