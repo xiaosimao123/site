@@ -1,3 +1,18 @@
+/* Code title styles */
+.remark-code-title {
+ 
+  @apply rounded-t-lg rounded-b-none; 
+ 
+  @apply mt-0.5 mb-0 font-mono  py-2 px-3.5 text-start;
+  @apply  text-lg   bg-gray-100 text-gray-800  dark:bg-gray-700     dark:text-gray-200;
+}
+
+.remark-code-title + div > pre {
+ 
+  @apply mt-0 rounded-t-none border-t-0;;
+}
+
+
 .code-highlight {
   @apply float-left min-w-full;
 }

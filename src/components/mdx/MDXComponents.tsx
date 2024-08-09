@@ -23,6 +23,11 @@ import {
   OptionTitle,
 } from "../docs/OptionsTable";
 import { Button } from "../common/Button";
+import { BulletList, BulletListItem } from "./ui/BulletList";
+import { DataTransformation } from "../landing-page/DataTransformation";
+import { localStep2DataTransformation } from "../landing-page/HowItWorks";
+import RefSubLayout from "../common/layouts/ref/RefSubLayout";
+import StepHikeCompact from "../common/StepHikeCompact";
 
 interface CodeHeaderProps {
   text: string;
@@ -34,7 +39,14 @@ export function CodeHeader({ text }: CodeHeaderProps) {
     </div>
   );
 }
-
+const Transform: React.FC<{ className?: string }> = ({ className }) => (
+  <div className={`mx-auto ${className}`}>
+    <DataTransformation
+      from={localStep2DataTransformation.from}
+      to={localStep2DataTransformation.to}
+    />
+  </div>
+);
 export const mdxComponents: MDXComponents = {
   h2: H2,
   h3: H3,
@@ -58,5 +70,12 @@ export const mdxComponents: MDXComponents = {
   OptionTitle,
   OptionDescription,
   Button,
+  BulletList,
+  BulletListItem,
+  Transform,
   CodeHeader,
+
+  RefSubLayout,
+
+  StepHikeCompact,
 };

@@ -80,7 +80,7 @@ export default makeSource({
     remarkPlugins: [
       // remarkExtractFrontmatter,
       remarkGfm,
-      // remarkCodeTitles,
+      remarkCodeTitles,
       [remarkFootnotes, { inlineNotes: true }],
       remarkMath,
       remarkImgToJsx,

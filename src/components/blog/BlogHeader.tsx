@@ -34,10 +34,20 @@ export const BlogHeader: FC<{ post: Post }> = ({ post }) => {
             {post.title}
           </h1>
           <p className="mb-2 flex">
-            <span className="mr-2 mt-1 block w-3 shrink-0 text-violet-600 dark:text-violet-400">
+            <span className="  mr-2 mt-1 block w-3 shrink-0 text-violet-600 dark:text-violet-400">
               <Icon name="calendar" />
             </span>
-            <span>{format(new Date(post.date), "MMMM dd, yyyy")}</span>
+            <span>{format(new Date(post.date), "yyyy-MM-dd")}</span>
+            <span className="  w-6" aria-hidden="true" />
+
+            <span className=" ">{`${Math.ceil(
+              post.readingTime.minutes
+            )} mins read`}</span>
+            <span className="  w-6" aria-hidden="true" />
+
+            <span className=" ">{`${Math.ceil(
+              post.readingTime.words
+            )} words all`}</span>
           </p>
         </div>
       </div>

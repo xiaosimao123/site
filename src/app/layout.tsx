@@ -2,7 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/no-danger */
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+
 import "@/styles/globals.css";
 
 import React, { useEffect, useState } from "react";
@@ -23,6 +23,9 @@ import {
 } from "@/components/mdx/ui/syntax-highlighting";
 import { ColorSchemeProvider } from "../components/ColorSchemeContext";
 import { Footer } from "@/components/common/Footer";
+import { cx } from "class-variance-authority";
+import { Inter } from "./fonts";
+import NoSSR from "./NoSSR";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -36,10 +39,20 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className={`${GeistSans.variable} ${GeistMono.variable} scroll-padding`}
+      className={cx(
+        Inter.variable,
+        GeistSans.variable,
+        GeistMono.variable,
+        "scroll-padding"
+      )}
       lang="en"
     >
+      s
       <head>
+        <meta
+          name="format-detection"
+          content="telephone=no, date=no, email=no, address=no"
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: /* js */ `
@@ -54,7 +67,6 @@ export default function RootLayout({
           }}
         />
       </head>
-
       <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
         {/* <script src="https://giscus.app/client.js"
         data-repo="[在此输入仓库]"
@@ -71,26 +83,28 @@ export default function RootLayout({
         crossOrigin="anonymous"
         async>
         </script> */}
-        <ColorSchemeProvider>
-          <MainNavigation />
-          {/* <SectionContainer>
+        <NoSSR>
+          <ColorSchemeProvider>
+            <MainNavigation />
+            {/* <SectionContainer>
           <div className="flex h-screen flex-col justify-between font-sans">
 
             <main className="mb-auto">{children}</main>
           </div>
         </SectionContainer> */}
-          <div className="flex min-h-screen flex-col justify-between">
-            <main
-              className="relative pt-16"
-              style={{ scrollPaddingTop: "150px" }}
-            >
-              {/* <SectionContainer> */}
-              {children}
-              {/* </SectionContainer> */}
-            </main>
-            <Footer />
-          </div>
-        </ColorSchemeProvider>
+            <div className="flex min-h-screen flex-col justify-between">
+              <main
+                className="relative pt-16"
+                style={{ scrollPaddingTop: "150px" }}
+              >
+                {/* <SectionContainer> */}
+                {children}
+                {/* </SectionContainer> */}
+              </main>
+              <Footer />
+            </div>
+          </ColorSchemeProvider>
+        </NoSSR>
       </body>
     </html>
   );

@@ -56,6 +56,7 @@ const config: Config = {
         "1.5xl": "1440px",
       },
       fontFamily: {
+        inter: ["Inter", "sans-serif"],
         sans: ["var(--font-geist-sans)"],
         mono: ["var(--font-geist-mono)"],
       },
@@ -64,6 +65,56 @@ const config: Config = {
         primary: colors.violet,
         gray: colors.gray,
       },
+
+      dropShadow: {
+        doodle: [
+          "-0.1875rem -0.1875rem 0.125rem var(--tw-shadow-color)",
+          "0.1875rem 0.1875rem 0.125rem var(--tw-shadow-color)",
+          "0.1875rem -0.1875rem 0.125rem var(--tw-shadow-color)",
+          "-0.1875rem 0.1875rem 0.125rem var(--tw-shadow-color)",
+        ],
+      },
+      boxShadow: {
+        "toolbar-hover": "0 0 8px 2px var(--tw-shadow-color)",
+        "toolbar-elevated": "0 0 6px 1px var(--tw-shadow-color)",
+      },
+      textShadow: {
+        none: "none",
+        DEFAULT: "0 0.0625rem 0.125rem var(--tw-shadow-color)",
+      },
+      ringWidth: {
+        0: "0rem",
+        1: "0.0625rem",
+        2: "0.125rem",
+        DEFAULT: "0.1875rem",
+      },
+      textDecorationThickness: {
+        0: "0rem",
+        1: "0.0625rem",
+        2: "0.125rem",
+        DEFAULT: "0.1875rem",
+      },
+      textUnderlineOffset: {
+        0: "0rem",
+        1: "0.0625rem",
+        2: "0.125rem",
+        DEFAULT: "0.1875rem",
+      },
+      transitionDuration: {
+        "50": "50ms",
+        "250": "250ms",
+      },
+      transitionDelay: {
+        "50": "50ms",
+        "250": "250ms",
+      },
+      transitionTimingFunction: {
+        in: "ease-in",
+        out: "ease-out",
+        "in-out": "ease-in-out",
+        DEFAULT: "ease-in-out",
+      },
+
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
