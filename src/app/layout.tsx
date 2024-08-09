@@ -47,7 +47,6 @@ export default function RootLayout({
       )}
       lang="en"
     >
-      s
       <head>
         <meta
           name="format-detection"
