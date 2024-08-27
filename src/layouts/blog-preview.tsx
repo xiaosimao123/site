@@ -3,6 +3,7 @@ import Tag from "@/components/Tag";
 import type { Blog } from "contentlayer/generated";
 import siteMetadata from "@/data/siteMetadata";
 import { formatDate } from "pliny/utils/formatDate";
+import format from "date-fns/format";
 
 type PostPreviewProps = {
   post: Blog;
@@ -41,12 +42,13 @@ function PostPreview({ post }: PostPreviewProps) {
         
         </dl> */}
 
-            <div className="flex my-1 gap-2 text-sm leading-snug text-muted-foreground">
+            <div className="text-muted-foreground my-1 flex gap-2 text-sm leading-snug">
               <div className="flex items-center gap-1">
                 {/* <CalendarDays size={16} /> */}
-                <time dateTime={date}>
+                {format(new Date(post.date), "yyyy-MM-dd")}
+                {/* <time dateTime={date}>
                   {formatDate(date, siteMetadata.locale)}
-                </time>
+                </time> */}
               </div>
               <span className="opacity-50">|</span>
               <div className="flex items-center gap-1">
@@ -55,7 +57,9 @@ function PostPreview({ post }: PostPreviewProps) {
               </div>
             </div>
             <div className="flex flex-wrap">
-              {tags?.map((tag) => <Tag key={tag} text={tag} />)}
+              {tags?.map((tag) => (
+                <Tag key={tag} text={tag} />
+              ))}
             </div>
           </div>
           <div className="prose max-w-none text-gray-500 dark:text-gray-400">

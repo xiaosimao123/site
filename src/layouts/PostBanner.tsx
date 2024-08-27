@@ -31,7 +31,7 @@ export default function PostMinimal({
 
   return (
     <>
-      <ScrollTopAndComment />
+      <ScrollTopAndComment slug={slug} />
       <article>
         <div>
           <div className="space-y-1 pb-10 text-center dark:border-gray-700">

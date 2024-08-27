@@ -43,7 +43,7 @@ export default function PostLayout({
 
   return (
     <>
-      <ScrollTopAndComment />
+      <ScrollTopAndComment slug={slug} />
       <article>
         <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
           <header className="pt-6 xl:pb-6">

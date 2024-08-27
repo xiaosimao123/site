@@ -28,7 +28,7 @@ export default function PostLayout({
 
   return (
     <div className="mx-auto max-w-screen-2xl px-4 py-8 md:px-8 md:py-16 lg:px-0">
-      <ScrollTopAndComment />
+      <ScrollTopAndComment slug={slug} />
       <BlogHeader post={content} />
       <article>
         {/* <header className="pt-6 xl:pb-6">

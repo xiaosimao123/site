@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+
 "use client";
 
 import siteMetadata from "@/data/siteMetadata";
+import { url } from "inspector";
 import { useEffect, useState } from "react";
 
-function ScrollTopAndComment() {
+const ScrollTopAndComment = () => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -22,9 +25,19 @@ function ScrollTopAndComment() {
   const handleScrollToComment = () => {
     document.getElementById("comment")?.scrollIntoView();
   };
+
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const pdfDownload = () => {
+    // window.location.href = `http://localhost:3000/api?${url}`
+    const slug = window.location.href.replace("http://localhost:3000/", "");
+    window.open(`http://localhost:3000/api?pdfurl=${slug}`);
+  };
+
   return (
     <div
-      className={`fixed bottom-8 right-8 hidden flex-col gap-3 ${show ? "md:flex" : "md:hidden"}`}
+      className={`fixed bottom-8 right-8 hidden flex-col gap-3 ${
+        show ? "md:flex" : "md:hidden"
+      }`}
     >
       {siteMetadata.comments?.provider && (
         <button
@@ -54,8 +67,23 @@ function ScrollTopAndComment() {
           />
         </svg>
       </button>
+
+      <button
+        aria-label="Download pdf"
+        type="button"
+        onClick={pdfDownload}
+        className="rounded-full bg-gray-200 p-2 text-gray-500 transition-all hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600"
+      >
+        <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path
+            fillRule="evenodd"
+            d="M3.875 17.188v-1.73h12.25v1.73ZM10 13.958 5.833 9.792l1.229-1.209 2.063 2.063V2.812h1.75v7.834l2.063-2.063 1.229 1.209Z"
+            clipRule="evenodd"
+          />
+        </svg>
+      </button>
     </div>
   );
-}
+};
 
 export default ScrollTopAndComment;
